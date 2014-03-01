@@ -5,23 +5,22 @@ import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL10;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 
 public class mtuhackgame implements ApplicationListener, Screen  {
+	SpriteBatch spriteBatch = new SpriteBatch();
+	BitmapFont font;
 	private Textures textures;
 	public ArrayList<character> actors;
 	public player p;
 	public hackworld world;
 	
-	//just declare all textures here?
-	//no, make a textures class!
 
 	@Override
 	public void render(float delta) {
-		//clear the background
-        Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
-        world.act(delta);
-        world.draw();
+		render();
 		
 	}
 
@@ -30,6 +29,9 @@ public class mtuhackgame implements ApplicationListener, Screen  {
 		// load all the textures
 		textures = new Textures(this);
 		
+		//setup the font
+		 font = new BitmapFont();
+		 
 		//create the player
 		p = new player(this);
 		//create the game stage
@@ -39,13 +41,12 @@ public class mtuhackgame implements ApplicationListener, Screen  {
 		
 		//set up the input stuff
     	Gdx.input.setInputProcessor(new hackinput(this));
-		
 	}
 
 	@Override
 	public void resize(int width, int height) {
 		//built in method for stages that handles resize
-		world.setViewport(width, height, true);
+		world.setViewport(width, height, false);
 	}
 	
 	@Override
@@ -62,8 +63,15 @@ public class mtuhackgame implements ApplicationListener, Screen  {
 
 	@Override
 	public void render() {
-		// TODO Auto-generated method stub
-		
+		//clear the background
+        Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
+        world.act(Gdx.graphics.getDeltaTime());
+        world.draw();
+        spriteBatch.begin();
+        font.setColor(1.0f, 0.0f, 1.0f, 1.0f);
+        font.draw(spriteBatch, ""+Gdx.graphics.getDeltaTime(), (int)(1200*Math.random()), (int)(600*Math.random()));
+        spriteBatch.end();
+        System.out.println(Gdx.graphics.getDeltaTime());
 	}
 
 	@Override
