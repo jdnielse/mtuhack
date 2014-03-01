@@ -1,0 +1,40 @@
+package com.mtuhack;
+
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.scenes.scene2d.Actor;
+
+public class character extends Actor{
+	
+	//set this in the individual character classes
+	TextureRegion textureRegion = null;
+	
+	mtuhackgame parent;
+	
+	//keep track of what direction this is facing
+	String dir = "up";
+	
+	public character(mtuhackgame p){
+		parent = p;
+		
+	}
+	
+	/**
+	 * default character acting
+	 */
+	@Override
+	public void act(float delta){
+		
+	}
+	
+	/**
+	 * Default draw method, just draws the texture
+	 */
+	public void draw (SpriteBatch batch, float parentAlpha) {
+		Color color = getColor();
+		batch.setColor(color.g, color.g, color.b, color.a * parentAlpha);
+		batch.draw(textureRegion, getX(), getY(), getOriginX(), getOriginY(), getWidth(), getHeight(), getScaleX(), getScaleY(), getRotation());
+	}
+
+}
