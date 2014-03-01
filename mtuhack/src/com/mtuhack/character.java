@@ -14,6 +14,11 @@ public class character extends Actor{
 	
 	//keep track of what direction this is facing
 	String dir = "up";
+	//keep track of what node it is on
+	Node current;
+	//keep track of location in map
+	int w;
+	int h;
 	
 	public character(mtuhackgame p){
 		parent = p;
