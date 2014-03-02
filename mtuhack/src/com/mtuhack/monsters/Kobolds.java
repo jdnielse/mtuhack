@@ -17,28 +17,28 @@ public class Kobolds extends monster{
 	int hp=12;
 	int xp=20;
 	int v_rad=6;
-	
-	double framecnt = 1;
+
 	public void act(float delta){
 		super.act(delta);
-		framecnt+=delta;
-		if(framecnt>0.5){
-			framecnt = 0;
-			switch((int)Math.ceil(Math.random()*4)){
-			case 4:
-				moveLeft();
-				break;
-			case 1:
-				moveRight();
-				break;
-			case 2:
-				moveUp();
-				break;
-			case 3:
-				moveDown();
-				break;
-				
+		boolean move=false;
+		while(!move){
+			if(Math.random()>.5){
+				if(getX()<game.p.getX()){
+					move=moveRight();
+				}
+				else if(getX()>game.p.getX()){
+					move=moveLeft();
+				}
 			}
+			else{
+				if(getY()<game.p.getY()){
+					move=moveUp();
+				}
+				else if(getY()>game.p.getY()){
+					move=moveDown();
+				}
+			}
+
 		}
 	}
 

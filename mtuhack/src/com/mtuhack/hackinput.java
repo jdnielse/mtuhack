@@ -16,6 +16,7 @@ public class hackinput implements InputProcessor{
 	 */
 	@Override
 	public boolean keyDown(int keycode) {
+		game.world.act();
 		switch(keycode){
 		case Keys.NUM_1:
 			//spawn a kobold at a set location
@@ -24,33 +25,21 @@ public class hackinput implements InputProcessor{
 			game.world.addActor(k);
 			return true;
 		case Keys.DOWN:
-			Node down=game.activeMap.getDown((int)game.p.getX()/32, (int)game.p.getY()/32);
-			if (down.getCanWalk()){
-				game.p.setPosition(game.p.getX(),game.p.getY()-32);
-			}
+			game.p.moveDown();
 			return true;
 		case Keys.RIGHT:
-			Node right=game.activeMap.getRight((int)game.p.getX()/32, (int)game.p.getY()/32);
-			if (right.getCanWalk()){
-				game.p.setPosition(game.p.getX()+32,game.p.getY());
-			}
+			game.p.moveRight();
 			return true;
 		case Keys.UP:
-			Node up=game.activeMap.getUp((int)game.p.getX()/32, (int)game.p.getY()/32);
-			if (up.getCanWalk()){
-				game.p.setPosition(game.p.getX(),game.p.getY()+32);
-			}
+			game.p.moveUp();
 			return true;
 		case Keys.LEFT:
-			Node left=game.activeMap.getLeft((int)game.p.getX()/32, (int)game.p.getY()/32);
-			if (left.getCanWalk()){
-				game.p.setPosition(game.p.getX()-32,game.p.getY());
-			}
+			game.p.moveLeft();
 			return true;
 		default:
 			return false;
 		}
-	}
+			}
 
 	@Override
 	public boolean keyUp(int keycode) {

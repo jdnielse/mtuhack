@@ -11,7 +11,7 @@ public class character extends Actor{
 	//set this in the individual character classes
 	protected TextureRegion textureRegion = null;
 	
-	mtuhackgame game;
+	protected mtuhackgame game;
 	int hp;
 	int AC;
 	int v_rad;
@@ -39,8 +39,8 @@ public class character extends Actor{
 		//update location
 		x = (int) (getX()/32);
 		y = (int) (getY()/32);
-		
-		
+		//make occupied node unwalkable
+		game.activeMap.getNode(x, y).setWalk(false);
 	}
 	
 	//see if we can move to the given square

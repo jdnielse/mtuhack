@@ -38,13 +38,13 @@ public class mtuhackgame implements ApplicationListener, Screen  {
 		//create the map
 		//activeMap = new Map(40,40,this);
 		Map m = new Map();
-		m.getArchwayMap();
+		m.getEntranceMap();
 		activeMap = m;
 		//create the player
 		p = new player(this);
 		//add the player to the stage
 		world.addActor(p);
-		p.setPosition(0,3*32);
+		p.setPosition(0,19*32);
 		p.setWidth(32);
 		p.setHeight(32);
 		set = new settings();
@@ -75,7 +75,7 @@ public class mtuhackgame implements ApplicationListener, Screen  {
 		//clear the background
         Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
         spriteBatch.begin();
-        world.act(Gdx.graphics.getDeltaTime());
+       // world.act(Gdx.graphics.getDeltaTime());
         world.draw();
         spriteBatch.end();
 //        spriteBatch.begin();

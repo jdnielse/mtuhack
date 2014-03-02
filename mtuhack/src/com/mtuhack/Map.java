@@ -99,7 +99,9 @@ public class Map{
 		}
 		return theMap[w+1][h];
 	}
-
+public Node getNode(int w, int h){
+	return theMap[w][h];
+}
 	/**
 	 * Gets the tile at the given point on the screen
 	 * @param p

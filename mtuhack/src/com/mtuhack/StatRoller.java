@@ -89,6 +89,6 @@ public class StatRoller {
 		return 0;
 	}
 	public static void main(String[] args){
-		StatGen("Ranger");
+		StatGen("Brute");
 	}
 }
