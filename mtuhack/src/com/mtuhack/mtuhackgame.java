@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mtuhack.monsters.DragonAdult;
+import com.mtuhack.monsters.GiantRat;
 import com.mtuhack.monsters.Goblin;
 import com.mtuhack.monsters.Kobolds;
 import com.mtuhack.monsters.Nagas;
@@ -99,7 +100,7 @@ public class mtuhackgame implements ApplicationListener, Screen  {
 		n.setPosition(16*32, 2*32);
 		this.world.addActor(n);
 		n = new Nagas(this);
-		n.setPosition(39*32, 15*32);
+		n.setPosition(37*32, 15*32);
 		this.world.addActor(n);
 		Slimes sl = new Slimes(this);
 		sl.setPosition(43*32, 4*32);
@@ -113,6 +114,15 @@ public class mtuhackgame implements ApplicationListener, Screen  {
 		DragonAdult da = new DragonAdult(this);
 		da.setPosition(79*32, 19*32);
 		this.world.addActor(da);
+		GiantRat r = new GiantRat(this);
+		r.setPosition(16*32, 19*32);
+		this.world.addActor(r);
+		r = new GiantRat(this);
+		r.setPosition(38*32, 14*32);
+		this.world.addActor(r);
+		r= new GiantRat(this);
+		r.setPosition(49*32, 7*32);
+		this.world.addActor(r);
 	}
 
 	@Override

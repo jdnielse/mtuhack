@@ -5,7 +5,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 public class Textures {
-	public static TextureRegion wall,water,walk,lava,player,kobold,orc,skeleton,dragonadult,dragonyoung,slimes,troll,goblin,giant,naga,bridge;
+	public static TextureRegion wall,water,walk,lava,player,kobold,orc,skeleton,dragonadult,dragonyoung,slimes,troll,goblin,giant,naga,bridge,rat;
 
 	
 	public Textures(mtuhackgame parent) {
@@ -26,7 +26,7 @@ public class Textures {
 		goblin = new TextureRegion(new Texture(Gdx.files.internal("assets/Goblin.png")));
 		giant = new TextureRegion(new Texture(Gdx.files.internal("assets/Giant.png")));
 		naga = new TextureRegion(new Texture(Gdx.files.internal("assets/Nagas.png")));
-
+		rat = new TextureRegion(new Texture(Gdx.files.internal("assets/Rat.png")));
 		//used to restrict what pixels are seen of the image
 	   // solid.setRegion(0, 0, 6, 6);
 	    //gridTopLeft.setRegion(0, 0, 6, 6);
