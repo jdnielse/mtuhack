@@ -56,6 +56,8 @@ public class Map{
 
 	public void setMap() {
 		theMap = new Node[60][20];
+		width = 60;
+		height = 20;
 		int w=0;
 		int h=19;
 		String type;

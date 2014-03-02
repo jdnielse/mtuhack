@@ -13,7 +13,7 @@ public class Textures {
 		water = new TextureRegion(new Texture(Gdx.files.internal("assets/water.png")));
 		walk = new TextureRegion(new Texture(Gdx.files.internal("assets/walk.png")));
 		lava = new TextureRegion(new Texture(Gdx.files.internal("assets/lava.png")));
-		player = new TextureRegion(new Texture(Gdx.files.internal("assets/Fighter.png")));
+		player = new TextureRegion(new Texture(Gdx.files.internal("assets/player.png")));
 		kobold = new TextureRegion(new Texture(Gdx.files.internal("assets/Kobold.png")));
 		orc = new TextureRegion(new Texture(Gdx.files.internal("assets/Orc.png")));
 		skeleton = new TextureRegion(new Texture(Gdx.files.internal("assets/Skeleton.png")));

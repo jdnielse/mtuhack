@@ -2,6 +2,10 @@ package com.mtuhack;
 
 import java.util.Map;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
+
 /**
  * contains methods and info about the player
  * @author kobold
@@ -32,6 +36,8 @@ public class player extends character{
 	}
 	public void assignclass(String classname){
 		if (!assigned) {
+			Textures.player = new TextureRegion(new Texture(Gdx.files.internal("assets/"+classname+".png")));
+			textureRegion = Textures.player;
 			stats=StatRoller.StatGen(classname);
 			classes=classname;
 			assigned=true;
