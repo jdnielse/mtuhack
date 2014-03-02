@@ -22,8 +22,10 @@ public class Slimes extends monster{
 		if(dead){return;}
 		super.act(delta);
 		boolean move=false;
+		calcattack();
 		if(dist2play()>v_rad){
 			chase_count=0;
+			game.mess2="";
 			if(++act_count>4){
 				act_count=1;
 			}
@@ -45,21 +47,60 @@ public class Slimes extends monster{
 		else{
 			++chase_count;
 			if(chase_count>5){
+				game.mess2="";
 				if(chase_count>10){
 					chase_count=0;
 				}
 			}
 			else{
-				chase();
+				if(Math.random()>.5){
+					if(getX()<game.p.getX()){
+						move=moveRight();
+					}
+					else if(getX()>game.p.getX()){
+						move=moveLeft();
+					}
+					if(!move){
+						if(getY()<game.p.getY()){
+							move=moveUp();
+						}
+						else if(getY()>game.p.getY()){
+							move=moveDown();
+						}
+						if(dist2play()==1){
+							attack(game.p);
+						}
+					}
+				}
+				else{
+					if(getY()<game.p.getY()){
+						move=moveUp();
+					}
+					else if(getY()>game.p.getY()){
+						move=moveDown();
+					}
+					if(!move){
+						if(getX()<game.p.getX()){
+							move=moveRight();
+						}
+						else if(getX()>game.p.getX()){
+							move=moveLeft();
+						}
+						if(dist2play()==1){
+							attack(game.p);
+						}
+					}
+
+				}
 			}
 		}
 	}
 
-	public void attack(int playerAC){
+	public void calcattack(){
 		double attackroll1=(Math.random()*20);
 		int attackroll=(int) Math.ceil(attackroll1);
-		int hit=attackroll;
+		hit=attackroll;
 		double damageroll=Math.random()*8;
-		int damage=(int) Math.ceil(damageroll);
+		damage=(int) Math.ceil(damageroll);
 	}
 }
