@@ -21,16 +21,14 @@ public class Kobolds extends monster{
 	public void act(float delta){
 		super.act(delta);
 		boolean move=false;
-		while(!move){
-			if(Math.random()>.5){
-				if(getX()<game.p.getX()){
-					move=moveRight();
-				}
-				else if(getX()>game.p.getX()){
-					move=moveLeft();
-				}
+		if(Math.random()>.5){
+			if(getX()<game.p.getX()){
+				move=moveRight();
 			}
-			else{
+			else if(getX()>game.p.getX()){
+				move=moveLeft();
+			}
+			if(!move){
 				if(getY()<game.p.getY()){
 					move=moveUp();
 				}
@@ -38,8 +36,24 @@ public class Kobolds extends monster{
 					move=moveDown();
 				}
 			}
-
 		}
+		else{
+			if(getY()<game.p.getY()){
+				move=moveUp();
+			}
+			else if(getY()>game.p.getY()){
+				move=moveDown();
+			}
+			if(!move){
+				if(getX()<game.p.getX()){
+					move=moveRight();
+				}
+				else if(getX()>game.p.getX()){
+					move=moveLeft();
+				}
+			}
+		}
+
 	}
 
 	public void attack(int playerAC){

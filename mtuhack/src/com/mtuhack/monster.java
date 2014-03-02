@@ -16,5 +16,5 @@ int xp;
 	public monster(mtuhackgame p) {
 		super(p);
 	}
-
 }
+

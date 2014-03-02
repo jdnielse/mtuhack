@@ -3,6 +3,7 @@ package com.mtuhack;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Input.Keys;
 import com.mtuhack.monsters.Kobolds;
+import com.mtuhack.monsters.Troll;
 
 public class hackinput implements InputProcessor{
 
@@ -16,30 +17,37 @@ public class hackinput implements InputProcessor{
 	 */
 	@Override
 	public boolean keyDown(int keycode) {
-		game.world.act();
+		boolean handled=false;
 		switch(keycode){
 		case Keys.NUM_1:
 			//spawn a kobold at a set location
 			Kobolds k = new Kobolds(game);
 			k.setPosition(10*32, 0);
 			game.world.addActor(k);
-			return true;
+			handled=true;
+			break;
 		case Keys.DOWN:
 			game.p.moveDown();
-			return true;
+			handled=true;
+			break;
 		case Keys.RIGHT:
 			game.p.moveRight();
-			return true;
+			handled=true;
+			break;
 		case Keys.UP:
 			game.p.moveUp();
-			return true;
+			handled=true;
+			break;
 		case Keys.LEFT:
 			game.p.moveLeft();
-			return true;
-		default:
-			return false;
+			handled=true;
+			break;
+			default:
+				return false;
 		}
-			}
+		game.world.act();	
+		return handled;
+	}
 
 	@Override
 	public boolean keyUp(int keycode) {
