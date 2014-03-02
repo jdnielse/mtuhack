@@ -9,7 +9,7 @@ import java.util.Random;
  * @author Aurora Seidenwand
  * 
  */
-public class Map extends Node {
+public class Map {
 
 	private Node[][] theMap;
 	private int width;
@@ -48,6 +48,10 @@ public class Map extends Node {
 	public void setMap(Node[][] newMap) {
 		this.theMap = newMap;
 	}
+	
+	public Node[][] getEntranceMap() {
+		return entrance;
+	}
 
 	// get neighbors methods
 	public Node getUp(int w, int h) {
@@ -80,7 +84,7 @@ public class Map extends Node {
 		Node random; 
 		Random generator = new Random();
 		String type;
-		
+
 		//three node types
 		int t = generator.nextInt(3);
 		if (t == 0) { type = "floor"; }
@@ -92,20 +96,90 @@ public class Map extends Node {
 		//two options for interaction
 		boolean i = generator.nextBoolean();
 		random = new Node(type, w, i);
-		
+
 		return random;
 	}
 
 	private void setEntrance() {
-		entrance = new Map[20][20];
+		entrance = new Node[20][20];
 		for (int w=0; w<20; w++) {
 			for (int h=0; h<20; h++) {
-				if (w<15) {
-					
+				//set node to default walkable non interactable floor
+				entrance[w][h] = new Node("floor",true,false);
+
+				//change nodes to create map
+				if (w==0) {
+					if (h>=7) {	entrance[w][h] = new Node("water",false,false);	}
 				}
+				if (w==1) {
+					if (h>=7) { entrance[w][h] = new Node("water",false,false);	}
+				}
+				if (w==2) {
+					if (h>=7 && h<18) { entrance[w][h] = new Node("water",false,false);	}
+				}
+				if (w==3) {
+					if (h==7) { entrance[w][h] = new Node("water",true,false); } 
+					if (h>=13 && h<17) { entrance[w][h] = new Node("water",false,false); }
+				}
+				if (w==4) {
+					if (h==7) { entrance[w][h] = new Node("water",true,false); }   
+					if (h>=4 && h<17) { entrance[w][h] = new Node("water",false,false); } 
+				}
+				if (w==5) {
+					if (h<8) { entrance[w][h] = new Node("water",false,false); }
+					if (h==19) { entrance[w][h] = new Node("wall",false,false); }
+				}
+				if (w==6) {
+					if (h<4) { entrance[w][h] = new Node("water",false,false); }
+					if (h==19) { entrance[w][h] = new Node("wall",false,false); }
+				}
+				if (w==7) {
+					if (h<3) { entrance[w][h] = new Node("water",false,false); }
+					if (h==18 || h==19) { entrance[w][h] = new Node("wall",false,false); }
+				}
+				if (w==8) {
+					if (h<3) { entrance[w][h] = new Node("water",false,false); }
+					if (h==18 || h==19) { entrance[w][h] = new Node("wall",false,false); }
+				}
+				if (w==9) {
+					if (h<3) { entrance[w][h] = new Node("water",false,false); } 
+					if (h==10 || h==11 || h>=17) { entrance[w][h] = new Node("wall",false,false); }
+				}
+				if (w==10) {
+					if (h<2) { entrance[w][h] = new Node("water",false,false); }
+					if ((h>=8 && h<13) || h>=17) { entrance[w][h] = new Node("wall",false,false); }
+				}
+				if (w==11) {
+					if (h<2) { entrance[w][h] = new Node("water",false,false); }
+					if ((h>=8 && h<12) || h>=18) { entrance[w][h] = new Node("wall",false,false); } 
+				}
+				if (w==12) {
+					if (h<2) { entrance[w][h] = new Node("water",false,false); } 
+					if ((h>=8 && h<12) || h==19) { entrance[w][h] = new Node("wall",false,false); }
+				}
+				if (w==13) {
+					if (h==0) { entrance[w][h] = new Node("water",false,false); } 
+					if (h==9 || h==10) { entrance[w][h] = new Node("wall",false,false); }
+				}
+				if (w==14) {
+					if (h==0) { entrance[w][h] = new Node("water",false,false); } 
+				}
+				if (w==16) {
+					if (h==0) { entrance[w][h] = new Node("wall",false,false); }
+				}
+				if (w==17) {
+					if (h<2) { entrance[w][h] = new Node("wall",false,false); }
+				}
+				if (w==18) {
+					if (h<2) { entrance[w][h] = new Node("wall",false,false); }
+				}
+				if (w==19) {
+					if (h<6) { entrance[w][h] = new Node("wall",false,false); }
+				}
+
 			}
 		}
-		
+
 	}//end set entrance
 
 }
