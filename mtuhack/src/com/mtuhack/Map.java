@@ -66,7 +66,7 @@ public class Map{
 		this.theMap = entrance;
 		return entrance;
 	}
-	
+
 	public Node[][] getArchwayMap() {
 		if(archway==null){
 			setArchway();
@@ -74,7 +74,7 @@ public class Map{
 		this.theMap = archway;
 		return archway;
 	}
-	
+
 	public Node[][] getRiverOfDoomMap() {
 		if(riverofdoom==null){
 			setRiverOfDoom();
@@ -108,9 +108,9 @@ public class Map{
 		}
 		return theMap[w+1][h];
 	}
-public Node getNode(int w, int h){
-	return theMap[w][h];
-}
+	public Node getNode(int w, int h){
+		return theMap[w][h];
+	}
 	/**
 	 * Gets the tile at the given point on the screen
 	 * @param p
@@ -147,98 +147,66 @@ public Node getNode(int w, int h){
 	}
 
 	private void setEntrance() {
-		height = 20;
-		width = 20;
 		entrance = new Node[20][20];
-		for (int w=0; w<20; w++) {
-			for (int h=0; h<20; h++) {
-				//set node to default walkable non interactable floor
-				entrance[w][h] = new Node("floor",true,false,w,h);
-
-				//change nodes to create map
-				if (w==0) {
-					if (h<4) {	entrance[w][h] = new Node("wall",false,false,w,h);	}
-					if (h>=5 && h<15) { entrance[w][h] = new Node("water",false,false,w,h); }
-				}
-				if (w==1) {
-					if (h<3) {	entrance[w][h] = new Node("wall",false,false,w,h);	}
-					if (h>=7 && h<15) { entrance[w][h] = new Node("water",false,false,w,h);	}
-				}
-				if (w==2) {
-					if (h==0) {	entrance[w][h] = new Node("wall",false,false,w,h);	}
-					if (h>=10 && h<15) { entrance[w][h] = new Node("water",false,false,w,h);	}
-				}
-				if (w==3) {
-					if (h==0) {	entrance[w][h] = new Node("wall",false,false,w,h);	} 
-					if (h>=13 && h<15) { entrance[w][h] = new Node("water",false,false,w,h); }
-				}
-				if (w==4) {
-					if (h==0) {	entrance[w][h] = new Node("wall",false,false,w,h);	}   
-					if (h==14) { entrance[w][h] = new Node("water",false,false,w,h); } 
-				}
-				if (w==5) {
-					if (h==0) {	entrance[w][h] = new Node("wall",false,false,w,h);	}
-					if (h==14) { entrance[w][h] = new Node("water",true,false,w,h); }
-				}
-				if (w==6) {
-					if (h==14) { entrance[w][h] = new Node("water",true,false,w,h); }
-				}
-				if (w==7) {
-					if (h==14 || h==15) { entrance[w][h] = new Node("water",true,false,w,h); }
-					if (h>15) {	entrance[w][h] = new Node("water",false,false,w,h);	}
-				}
-				if (w==8) {
-					if (h>=7 && h<10) {	entrance[w][h] = new Node("wall",false,false,w,h);	}
-					if (h>=17) { entrance[w][h] = new Node("water",false,false,w,h); }
-				}
-				if (w==9) {
-					if (h>=6 && h<10) {	entrance[w][h] = new Node("wall",false,false,w,h);	} 
-					if (h>=17) { entrance[w][h] = new Node("water",false,false,w,h); }
-				}
-				if (w==10) {
-					if (h>=6 && h<11) { entrance[w][h] = new Node("wall",false,false,w,h); }
-					if (h>=17) { entrance[w][h] = new Node("water",false,false,w,h); }
-				}
-				if (w==11) {
-					if (h>=7 && h<11) { entrance[w][h] = new Node("wall",false,false,w,h); }
-					if (h>=17) { entrance[w][h] = new Node("water",false,false,w,h); } 
-				}
-				if (w==12) {
-					if (h==9) { entrance[w][h] = new Node("wall",false,false,w,h); } 
-					if (h>=17) { entrance[w][h] = new Node("water",false,false,w,h); }
-				}
-				if (w==13) { 
-					if (h>14) { entrance[w][h] = new Node("water",false,false,w,h); }
-				}
-				if (w==14) {
-					if (h>14) { entrance[w][h] = new Node("water",false,false,w,h); } 
-				}
-				if (w==15) {
-					if (h>14) { entrance[w][h] = new Node("water",false,false,w,h); }
-				}
-				if (w==16) {
-					if (h==0) { entrance[w][h] = new Node("wall",false,false,w,h); }
-					if (h>14) { entrance[w][h] = new Node("water",false,false,w,h); }
-				}
-				if (w==17) {
-					if (h<2) { entrance[w][h] = new Node("wall",false,false,w,h); }
-					if (h>8 && h<11) { entrance[w][h] = new Node("wall",false,false,w,h); }
-					if (h>16) { entrance[w][h] = new Node("water",false,false,w,h); }
-				}
-				if (w==18) {
-					if (h<2) { entrance[w][h] = new Node("wall",false,false,w,h); }
-					if (h>=8 && h<13) { entrance[w][h] = new Node("wall",false,false,w,h); }
-					if (h>17) { entrance[w][h] = new Node("water",false,false,w,h); }
-				}
-				if (w==19) {
-					if (h<2) { entrance[w][h] = new Node("wall",false,false,w,h); }
-					if (h>=7 && h<15) { entrance[w][h] = new Node("wall",false,false,w,h); }
-					if (h>17) { entrance[w][h] = new Node("water",false,false,w,h); }
-				}
-
-			}
+		int w=0;
+		int h=19;
+		String type;
+		Scanner scanner;
+		try {
+			scanner = new Scanner(new File("entrance"));
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return;
 		}
+		scanner.useDelimiter(" ");
+		int last = 19;
+		while (scanner.hasNext()) {
+			type = scanner.next();
+			type = type.replace("\n", "");
+			type = type.trim();
 
+			if (type.equals("000")) { //unwalkable floor
+				entrance[w][h] = new Node("floor",false,false,w,h);
+				w++;
+			}else
+				if (type.equals("010")) { //walkable floor
+					entrance[w][h] = new Node("floor",true,false,w,h);
+					w++;
+				}else
+					if (type.equals("300")) { //unwalkable water
+						entrance[w][h] = new Node("water",false,false,w,h);
+						w++;
+					}else
+						if (type.equals("310")) { //walkable water
+							entrance[w][h] = new Node("water",true,false,w,h);
+							w++;
+						}else
+							if (type.equals("100")) { //unwalkable wall
+								entrance[w][h] = new Node("wall",false,false,w,h);
+								w++;
+							}else
+								if (type.equals("110")) { //walkable wall
+									entrance[w][h] = new Node("wall",true,false,w,h);
+									w++;
+								}else
+									if (type.equals("200")) { //unwalkable lava
+										entrance[w][h] = new Node("lava",false,false,w,h);
+										w++;
+									}else
+										if (type.equals("210")) { //walkable lava
+											entrance[w][h] = new Node("lava",true,false,w,h);
+											w++;
+										}else{
+											System.out.println("unhandled case: ["+type+"]");
+										}
+			if (w>19) {
+				w=0;
+				h--;
+			}
+
+		}
+		scanner.close();
 	}//end set entrance
 
 	private void setArchway() {
@@ -265,46 +233,46 @@ public Node getNode(int w, int h){
 				archway[w][h] = new Node("floor",false,false,w,h);
 				w++;
 			}else
-			if (type.equals("010")) { //walkable floor
-				archway[w][h] = new Node("floor",true,false,w,h);
-				w++;
-			}else
-			if (type.equals("300")) { //unwalkable water
-				archway[w][h] = new Node("water",false,false,w,h);
-				w++;
-			}else
-			if (type.equals("310")) { //walkable water
-				archway[w][h] = new Node("water",true,false,w,h);
-				w++;
-			}else
-			if (type.equals("100")) { //unwalkable wall
-				archway[w][h] = new Node("wall",false,false,w,h);
-				w++;
-			}else
-			if (type.equals("110")) { //walkable wall
-				archway[w][h] = new Node("wall",true,false,w,h);
-				w++;
-			}else
-			if (type.equals("200")) { //unwalkable lava
-				archway[w][h] = new Node("lava",false,false,w,h);
-				w++;
-			}else
-			if (type.equals("210")) { //walkable lava
-				archway[w][h] = new Node("lava",true,false,w,h);
-				w++;
-			}else{
-				System.out.println("unhandled case: ["+type+"]");
-			}
+				if (type.equals("010")) { //walkable floor
+					archway[w][h] = new Node("floor",true,false,w,h);
+					w++;
+				}else
+					if (type.equals("300")) { //unwalkable water
+						archway[w][h] = new Node("water",false,false,w,h);
+						w++;
+					}else
+						if (type.equals("310")) { //walkable water
+							archway[w][h] = new Node("water",true,false,w,h);
+							w++;
+						}else
+							if (type.equals("100")) { //unwalkable wall
+								archway[w][h] = new Node("wall",false,false,w,h);
+								w++;
+							}else
+								if (type.equals("110")) { //walkable wall
+									archway[w][h] = new Node("wall",true,false,w,h);
+									w++;
+								}else
+									if (type.equals("200")) { //unwalkable lava
+										archway[w][h] = new Node("lava",false,false,w,h);
+										w++;
+									}else
+										if (type.equals("210")) { //walkable lava
+											archway[w][h] = new Node("lava",true,false,w,h);
+											w++;
+										}else{
+											System.out.println("unhandled case: ["+type+"]");
+										}
 			if (w>19) {
 				w=0;
 				h--;
 			}
-			
+
 		}
 		scanner.close();
 
 	}//end set archway
-	
+
 	private void setRiverOfDoom() {
 		riverofdoom = new Node[20][20];
 		int w=0;
@@ -329,41 +297,41 @@ public Node getNode(int w, int h){
 				riverofdoom[w][h] = new Node("floor",false,false,w,h);
 				w++;
 			}else
-			if (type.equals("010")) { //walkable floor
-				riverofdoom[w][h] = new Node("floor",true,false,w,h);
-				w++;
-			}else
-			if (type.equals("300")) { //unwalkable water
-				riverofdoom[w][h] = new Node("water",false,false,w,h);
-				w++;
-			}else
-			if (type.equals("310")) { //walkable water
-				riverofdoom[w][h] = new Node("water",true,false,w,h);
-				w++;
-			}else
-			if (type.equals("100")) { //unwalkable wall
-				riverofdoom[w][h] = new Node("wall",false,false,w,h);
-				w++;
-			}else
-			if (type.equals("110")) { //walkable wall
-				riverofdoom[w][h] = new Node("wall",true,false,w,h);
-				w++;
-			}else
-			if (type.equals("200")) { //unwalkable lava
-				riverofdoom[w][h] = new Node("lava",false,false,w,h);
-				w++;
-			}else
-			if (type.equals("210")) { //walkable lava
-				riverofdoom[w][h] = new Node("lava",true,false,w,h);
-				w++;
-			}else{
-				System.out.println("unhandled case: ["+type+"]");
-			}
+				if (type.equals("010")) { //walkable floor
+					riverofdoom[w][h] = new Node("floor",true,false,w,h);
+					w++;
+				}else
+					if (type.equals("300")) { //unwalkable water
+						riverofdoom[w][h] = new Node("water",false,false,w,h);
+						w++;
+					}else
+						if (type.equals("310")) { //walkable water
+							riverofdoom[w][h] = new Node("water",true,false,w,h);
+							w++;
+						}else
+							if (type.equals("100")) { //unwalkable wall
+								riverofdoom[w][h] = new Node("wall",false,false,w,h);
+								w++;
+							}else
+								if (type.equals("110")) { //walkable wall
+									riverofdoom[w][h] = new Node("wall",true,false,w,h);
+									w++;
+								}else
+									if (type.equals("200")) { //unwalkable lava
+										riverofdoom[w][h] = new Node("lava",false,false,w,h);
+										w++;
+									}else
+										if (type.equals("210")) { //walkable lava
+											riverofdoom[w][h] = new Node("lava",true,false,w,h);
+											w++;
+										}else{
+											System.out.println("unhandled case: ["+type+"]");
+										}
 			if (w>19) {
 				w=0;
 				h--;
 			}
-			
+
 		}
 		scanner.close();
 
