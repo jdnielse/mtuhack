@@ -53,7 +53,7 @@ public class Map{
 	public void setMap(Node[][] newMap) {
 		this.theMap = newMap;
 	}
-	
+
 	public Node[][] getEntranceMap() {
 		if(entrance==null){
 			setEntrance();
@@ -87,7 +87,7 @@ public class Map{
 		}
 		return theMap[w+1][h];
 	}
-	
+
 	/**
 	 * Gets the tile at the given point on the screen
 	 * @param p
@@ -132,72 +132,83 @@ public class Map{
 
 				//change nodes to create map
 				if (w==0) {
-					if (h>=7) {	entrance[w][h] = new Node("water",false,false,w,h);	}
+					if (h<4) {	entrance[w][h] = new Node("wall",false,false,w,h);	}
+					if (h>=5 && h<15) { entrance[w][h] = new Node("water",false,false,w,h); }
 				}
 				if (w==1) {
-					if (h>=7) { entrance[w][h] = new Node("water",false,false,w,h);	}
+					if (h<3) {	entrance[w][h] = new Node("wall",false,false,w,h);	}
+					if (h>=7 && h<15) { entrance[w][h] = new Node("water",false,false,w,h);	}
 				}
 				if (w==2) {
-					if (h>=7 && h<18) { entrance[w][h] = new Node("water",false,false,w,h);	}
+					if (h==0) {	entrance[w][h] = new Node("wall",false,false,w,h);	}
+					if (h>=10 && h<15) { entrance[w][h] = new Node("water",false,false,w,h);	}
 				}
 				if (w==3) {
-					if (h==7) { entrance[w][h] = new Node("water",true,false,w,h); } 
-					if (h>=13 && h<17) { entrance[w][h] = new Node("water",false,false,w,h); }
+					if (h==0) {	entrance[w][h] = new Node("wall",false,false,w,h);	} 
+					if (h>=13 && h<15) { entrance[w][h] = new Node("water",false,false,w,h); }
 				}
 				if (w==4) {
-					if (h==7) { entrance[w][h] = new Node("water",true,false,w,h); }   
-					if (h>=4 && h<17) { entrance[w][h] = new Node("water",false,false,w,h); } 
+					if (h==0) {	entrance[w][h] = new Node("wall",false,false,w,h);	}   
+					if (h==14) { entrance[w][h] = new Node("water",false,false,w,h); } 
 				}
 				if (w==5) {
-					if (h<8) { entrance[w][h] = new Node("water",false,false,w,h); }
-					if (h==19) { entrance[w][h] = new Node("wall",false,false,w,h); }
+					if (h==0) {	entrance[w][h] = new Node("wall",false,false,w,h);	}
+					if (h==14) { entrance[w][h] = new Node("water",true,false,w,h); }
 				}
 				if (w==6) {
-					if (h<4) { entrance[w][h] = new Node("water",false,false,w,h); }
-					if (h==19) { entrance[w][h] = new Node("wall",false,false,w,h); }
+					if (h==14) { entrance[w][h] = new Node("water",true,false,w,h); }
 				}
 				if (w==7) {
-					if (h<3) { entrance[w][h] = new Node("water",false,false,w,h); }
-					if (h==18 || h==19) { entrance[w][h] = new Node("wall",false,false,w,h); }
+					if (h==14 || h==15) { entrance[w][h] = new Node("water",true,false,w,h); }
+					if (h>15) {	entrance[w][h] = new Node("water",false,false,w,h);	}
 				}
 				if (w==8) {
-					if (h<3) { entrance[w][h] = new Node("water",false,false,w,h); }
-					if (h==18 || h==19) { entrance[w][h] = new Node("wall",false,false,w,h); }
+					if (h>=7 && h<10) {	entrance[w][h] = new Node("wall",false,false,w,h);	}
+					if (h>=17) { entrance[w][h] = new Node("water",false,false,w,h); }
 				}
 				if (w==9) {
-					if (h<3) { entrance[w][h] = new Node("water",false,false,w,h); } 
-					if (h==10 || h==11 || h>=17) { entrance[w][h] = new Node("wall",false,false,w,h); }
+					if (h>=6 && h<10) {	entrance[w][h] = new Node("wall",false,false,w,h);	} 
+					if (h>=17) { entrance[w][h] = new Node("water",false,false,w,h); }
 				}
 				if (w==10) {
-					if (h<2) { entrance[w][h] = new Node("water",false,false,w,h); }
-					if ((h>=8 && h<13) || h>=17) { entrance[w][h] = new Node("wall",false,false,w,h); }
+					if (h>=6 && h<11) { entrance[w][h] = new Node("wall",false,false,w,h); }
+					if (h>=17) { entrance[w][h] = new Node("water",false,false,w,h); }
 				}
 				if (w==11) {
-					if (h<2) { entrance[w][h] = new Node("water",false,false,w,h); }
-					if ((h>=8 && h<12) || h>=18) { entrance[w][h] = new Node("wall",false,false,w,h); } 
+					if (h>=7 && h<11) { entrance[w][h] = new Node("wall",false,false,w,h); }
+					if (h>=17) { entrance[w][h] = new Node("water",false,false,w,h); } 
 				}
 				if (w==12) {
-					if (h<2) { entrance[w][h] = new Node("water",false,false,w,h); } 
-					if ((h>=8 && h<12) || h==19) { entrance[w][h] = new Node("wall",false,false,w,h); }
+					if (h==9) { entrance[w][h] = new Node("wall",false,false,w,h); } 
+					if (h>=17) { entrance[w][h] = new Node("water",false,false,w,h); }
 				}
-				if (w==13) {
-					if (h==0) { entrance[w][h] = new Node("water",false,false,w,h); } 
-					if (h==9 || h==10) { entrance[w][h] = new Node("wall",false,false,w,h); }
+				if (w==13) { 
+					if (h>14) { entrance[w][h] = new Node("water",false,false,w,h); }
 				}
 				if (w==14) {
-					if (h==0) { entrance[w][h] = new Node("water",false,false,w,h); } 
+					if (h>14) { entrance[w][h] = new Node("water",false,false,w,h); } 
+				}
+				if (w==15) {
+					if (h>14) { entrance[w][h] = new Node("water",false,false,w,h); }
 				}
 				if (w==16) {
 					if (h==0) { entrance[w][h] = new Node("wall",false,false,w,h); }
+					if (h>14) { entrance[w][h] = new Node("water",false,false,w,h); }
 				}
 				if (w==17) {
 					if (h<2) { entrance[w][h] = new Node("wall",false,false,w,h); }
+					if (h>8 && h<11) { entrance[w][h] = new Node("wall",false,false,w,h); }
+					if (h>16) { entrance[w][h] = new Node("water",false,false,w,h); }
 				}
 				if (w==18) {
 					if (h<2) { entrance[w][h] = new Node("wall",false,false,w,h); }
+					if (h>=8 && h<13) { entrance[w][h] = new Node("wall",false,false,w,h); }
+					if (h>17) { entrance[w][h] = new Node("water",false,false,w,h); }
 				}
 				if (w==19) {
-					if (h<6) { entrance[w][h] = new Node("wall",false,false,w,h); }
+					if (h<2) { entrance[w][h] = new Node("wall",false,false,w,h); }
+					if (h>=7 && h<15) { entrance[w][h] = new Node("wall",false,false,w,h); }
+					if (h>17) { entrance[w][h] = new Node("water",false,false,w,h); }
 				}
 
 			}
