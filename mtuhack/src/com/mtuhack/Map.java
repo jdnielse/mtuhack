@@ -194,7 +194,7 @@ public class Map{
 					entrance[w][h] = new Node("floor",true,false,false,w,h);
 					w++;
 				}else
-					if (type.equals("0101")) {//walkable floor to next map
+					if (type.equals("010n")) {//walkable floor to next map
 						entrance[w][h] = new Node("floor",true,false,true,w,h);
 					}else
 						if (type.equals("300")) { //unwalkable water

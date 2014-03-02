@@ -12,6 +12,7 @@ public class player extends character{
 	int maxhp = 10;
 	String classes;
 	String weapon;
+	boolean assigned=false;
 	/**
 	 * constructor just takes the parent
 	 * assigns the texture of the player to the player texture
@@ -21,13 +22,20 @@ public class player extends character{
 		super(p);
 		textureRegion = Textures.player;
 		weapon = "Greatsword";
-		assignclass("Fighter");
+		assignclass();
 		hp = maxhp;
 
 	}
+	public void assignclass() {
+		game.mess = "Choose a class:\n7 Fighter   8 Thief   9 Wizard   0 Brute   - Ranger";
+	}
 	public void assignclass(String classname){
-		stats=StatRoller.StatGen(classname);
-		classes=classname;
+		if (!assigned) {
+			stats=StatRoller.StatGen(classname);
+			classes=classname;
+			assigned=true;
+			game.mess = "";
+		}
 	}
 	public void levelup(){
 		maxhp=maxhp+StatRoller.hitpoint(stats.get("CON"),classes);	

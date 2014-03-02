@@ -9,7 +9,7 @@ import com.mtuhack.monsters.Slimes;
 import com.mtuhack.monsters.Troll;
 
 public class hackinput implements InputProcessor{
-
+	
 	mtuhackgame game;
 	public hackinput(mtuhackgame g){
 		game = g;
@@ -102,6 +102,26 @@ public class hackinput implements InputProcessor{
 					}
 				}
 			}
+			handled=true;
+			break;
+		case Keys.NUM_7:
+			game.p.assignclass("Fighter");
+			handled=true;
+			break;
+		case Keys.NUM_8:
+			game.p.assignclass("Thief");
+			handled=true;
+			break;
+		case Keys.NUM_9:
+			game.p.assignclass("Wizard");
+			handled=true;
+			break;
+		case Keys.NUM_0:
+			game.p.assignclass("Brute");
+			handled=true;
+			break;
+		case Keys.MINUS:
+			game.p.assignclass("Ranger");
 			handled=true;
 			break;
 		default:
