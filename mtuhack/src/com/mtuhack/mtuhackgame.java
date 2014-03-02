@@ -19,6 +19,7 @@ public class mtuhackgame implements ApplicationListener, Screen  {
 	public hackworld world;
 	public settings set;
 	public Map activeMap;
+	public String mess = "";
 
 	@Override
 	public void render(float delta) {
@@ -78,10 +79,10 @@ public class mtuhackgame implements ApplicationListener, Screen  {
        // world.act(Gdx.graphics.getDeltaTime());
         world.draw();
         spriteBatch.end();
-//        spriteBatch.begin();
-//        font.setColor(1.0f, 0.0f, 1.0f, 1.0f);
-//        font.draw(spriteBatch, ""+Gdx.graphics.getDeltaTime(), 0, 15);
-//        spriteBatch.end();
+        spriteBatch.begin();
+        font.setColor(1.0f, 0.0f, 0.0f, 1.0f);
+        font.draw(spriteBatch, mess, 0, 15);
+        spriteBatch.end();
 	}
 
 	@Override

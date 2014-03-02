@@ -96,6 +96,16 @@ public class character extends Actor{
 		}
 		return false;
 	}
+	
+	public void kill(){
+
+		updatePos();
+		//make occupied node unwalkable
+		game.activeMap.getNode(x, y).setWalk(true);
+
+		setPosition(-100, -100);
+		dead = true;
+	}
 
 	/**
 	 * Default draw method, just draws the texture

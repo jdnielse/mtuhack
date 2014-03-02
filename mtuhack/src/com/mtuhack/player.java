@@ -80,15 +80,18 @@ public class player extends character{
 			break;
 		}
 		if(hit>m.AC){
+			game.mess="";
 			m.hp-=damage;
 			if(m.hp <= 0){
 				//kill it
-				m.setVisible(false);
-				m.setPosition(-100, -100);
-				m.dead = true;
+				m.kill();
+				game.mess = "Killed and ";
 			}
+			game.mess += "hit "+(m.getClass().toString().substring(m.getClass().toString().lastIndexOf('.'), m.getClass().toString().length()-1)+" with a "+hit+" to hit and did "+damage+" damage!");
+
+		}else{
+			game.mess = "Missed "+(m.getClass().toString().substring(m.getClass().toString().lastIndexOf('.'), m.getClass().toString().length()-1)+" with a "+hit);
 		}
-		System.out.println("hit: "+hit+" damage: "+damage+" m.ac: "+m.AC+" m.hp: "+m.hp);
 
 	}
 }

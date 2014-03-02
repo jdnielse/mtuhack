@@ -18,6 +18,7 @@ public class Slimes extends monster{
 	int act_count=0;
 	int chase_count=0;
 	public void act(float delta){
+		if(dead){return;}
 		super.act(delta);
 		boolean move=false;
 		if(dist2play()>v_rad){
