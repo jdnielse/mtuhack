@@ -49,45 +49,59 @@ public class player extends character{
 	public void levelup(){
 		//pick a stat to add 1 to
 		level++;
-		double rand = Math.random();
-		switch(classes){
-		case "Fighter":
-			if(rand>(4/9.0)){
-				stats.put("STR", stats.get("STR")+1);
-			}else if(rand < (3/9.0)){
-				stats.put("CON", stats.get("CON")+1);
-			}else{
-				stats.put("DEX", stats.get("DEX")+1);
+		if(level!=1){
+			double rand = Math.random();
+			switch(classes){
+			case "Fighter":
+				if(rand>(4/9.0)){
+					stats.put("STR", stats.get("STR")+1);
+					game.mess2 = "You leveled up and got a point in STR!";
+				}else if(rand < (3/9.0)){
+					stats.put("CON", stats.get("CON")+1);
+					game.mess2 = "You leveled up and got a point in CON!";
+				}else{
+					stats.put("DEX", stats.get("DEX")+1);
+					game.mess2 = "You leveled up and got a point in DEX!";
+				}
+				break;
+			case "Thief":
+			case "Ranger":
+				if(rand>(4/9.0)){
+					stats.put("DEX", stats.get("DEX")+1);
+					game.mess2 = "You leveled up and got a point in DEX!";
+				}else if(rand < (3/9.0)){
+					stats.put("CON", stats.get("CON")+1);
+					game.mess2 = "You leveled up and got a point in CON!";
+				}else{
+					stats.put("STR", stats.get("STR")+1);
+					game.mess2 = "You leveled up and got a point in STR!";
+				}
+				break;
+			case "Wizard":
+				if(rand>(4/9.0)){
+					stats.put("INT", stats.get("INT")+1);
+					game.mess2 = "You leveled up and got a point in INT!";
+				}else if(rand < (3/9.0)){
+					stats.put("DEX", stats.get("DEX")+1);
+					game.mess2 = "You leveled up and got a point in DEX!";
+				}else{
+					stats.put("CON", stats.get("CON")+1);
+					game.mess2 = "You leveled up and got a point in CON!";
+				}
+				break;
+			case "Brute":
+				if(rand>(4/9.0)){
+					stats.put("CON", stats.get("CON")+1);
+					game.mess2 = "You leveled up and got a point in CON!";
+				}else if(rand < (3/9.0)){
+					stats.put("STR", stats.get("STR")+1);
+					game.mess2 = "You leveled up and got a point in STR!";
+				}else{
+					stats.put("DEX", stats.get("DEX")+1);
+					game.mess2 = "You leveled up and got a point in DEX!";
+				}
+				break;
 			}
-			break;
-		case "Thief":
-		case "Ranger":
-			if(rand>(4/9.0)){
-				stats.put("DEX", stats.get("DEX")+1);
-			}else if(rand < (3/9.0)){
-				stats.put("CON", stats.get("CON")+1);
-			}else{
-				stats.put("STR", stats.get("STR")+1);
-			}
-			break;
-		case "Wizard":
-			if(rand>(4/9.0)){
-				stats.put("INT", stats.get("INT")+1);
-			}else if(rand < (3/9.0)){
-				stats.put("DEX", stats.get("DEX")+1);
-			}else{
-				stats.put("CON", stats.get("CON")+1);
-			}
-			break;
-		case "Brute":
-			if(rand>(4/9.0)){
-				stats.put("CON", stats.get("CON")+1);
-			}else if(rand < (3/9.0)){
-				stats.put("STR", stats.get("STR")+1);
-			}else{
-				stats.put("DEX", stats.get("DEX")+1);
-			}
-			break;
 		}
 
 		maxhp=maxhp+StatRoller.hitpoint(stats.get("CON"),classes);	
