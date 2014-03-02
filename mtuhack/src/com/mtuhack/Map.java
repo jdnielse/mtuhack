@@ -23,6 +23,7 @@ public class Map{
 	private Node wall = new Node("walld", false, false,-1,-1); 
 	public Node[][] entrance;
 	public Node[][] archway;
+	public Node[][] riverofdoom;
 	private mtuhackgame g;
 
 	/** default constructor */
@@ -72,6 +73,14 @@ public class Map{
 		}
 		this.theMap = archway;
 		return archway;
+	}
+	
+	public Node[][] getRiverOfDoomMap() {
+		if(riverofdoom==null){
+			setRiverOfDoom();
+		}
+		this.theMap = riverofdoom;
+		return riverofdoom;
 	}
 
 	// get neighbors methods
@@ -295,4 +304,68 @@ public Node getNode(int w, int h){
 		scanner.close();
 
 	}//end set archway
+	
+	private void setRiverOfDoom() {
+		riverofdoom = new Node[20][20];
+		int w=0;
+		int h=19;
+		String type;
+		Scanner scanner;
+		try {
+			scanner = new Scanner(new File("riverofdoom"));
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return;
+		}
+		scanner.useDelimiter(" ");
+		int last = 19;
+		while (scanner.hasNext()) {
+			type = scanner.next();
+			type = type.replace("\n", "");
+			type = type.trim();
+
+			if (type.equals("000")) { //unwalkable floor
+				riverofdoom[w][h] = new Node("floor",false,false,w,h);
+				w++;
+			}else
+			if (type.equals("010")) { //walkable floor
+				riverofdoom[w][h] = new Node("floor",true,false,w,h);
+				w++;
+			}else
+			if (type.equals("300")) { //unwalkable water
+				riverofdoom[w][h] = new Node("water",false,false,w,h);
+				w++;
+			}else
+			if (type.equals("310")) { //walkable water
+				riverofdoom[w][h] = new Node("water",true,false,w,h);
+				w++;
+			}else
+			if (type.equals("100")) { //unwalkable wall
+				riverofdoom[w][h] = new Node("wall",false,false,w,h);
+				w++;
+			}else
+			if (type.equals("110")) { //walkable wall
+				riverofdoom[w][h] = new Node("wall",true,false,w,h);
+				w++;
+			}else
+			if (type.equals("200")) { //unwalkable lava
+				riverofdoom[w][h] = new Node("lava",false,false,w,h);
+				w++;
+			}else
+			if (type.equals("210")) { //walkable lava
+				riverofdoom[w][h] = new Node("lava",true,false,w,h);
+				w++;
+			}else{
+				System.out.println("unhandled case: ["+type+"]");
+			}
+			if (w>19) {
+				w=0;
+				h--;
+			}
+			
+		}
+		scanner.close();
+
+	}//end set riverOfDoom
 }
