@@ -10,6 +10,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 
 public class mtuhackgame implements ApplicationListener, Screen  {
+	public static mtuhackgame g;
 	SpriteBatch spriteBatch = new SpriteBatch();
 	BitmapFont font;
 	private Textures textures;
@@ -31,11 +32,14 @@ public class mtuhackgame implements ApplicationListener, Screen  {
 		textures = new Textures(this);
 		//create the game stage
 		world = new hackworld();
-		
+		g = this;
 		//setup the font
 		font = new BitmapFont();
 		//create the map
-		activeMap = new Map(40,40,this);
+		//activeMap = new Map(40,40,this);
+		Map m = new Map();
+		m.getEntranceMap();
+		activeMap = m;
 		//create the player
 		p = new player(this);
 

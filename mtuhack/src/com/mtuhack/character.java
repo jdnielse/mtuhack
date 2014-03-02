@@ -1,6 +1,7 @@
 package com.mtuhack;
 
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Actor;
@@ -40,8 +41,8 @@ public class character extends Actor{
 	/**
 	 * Default draw method, just draws the texture
 	 */
-	public void draw (SpriteBatch batch, float parentAlpha) {
-		System.out.println("act");
+	@Override
+	public void draw (Batch batch, float parentAlpha) {
 		Color color = getColor();
 		batch.setColor(color.g, color.g, color.b, color.a * parentAlpha);
 		batch.draw(textureRegion, getX(), getY(), getOriginX(), getOriginY(), getWidth(), getHeight(), getScaleX(), getScaleY(), getRotation());

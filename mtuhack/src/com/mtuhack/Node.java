@@ -22,10 +22,14 @@ public class Node extends Actor{
 	
 	/** Creates a walkable floor node that cannot be interacted with */
 	public Node() {
-		this("floor", true, false);
+		this("floor", true, false,0,0);
 	}
 	/** Creates a node with the given element and next node. */
-	public Node(String e, boolean w, boolean i) {
+	public Node(String e, boolean w, boolean i, int x, int y) {
+		setPosition(x,y);
+		updatePosition();
+		mtuhackgame.g.world.addActor(this);
+		
 		element = e;
 		walkable = w;
 		interact = i;
@@ -50,7 +54,7 @@ public class Node extends Actor{
 	
 	public void updatePosition() {
 		//THe map is "inverted" per se, so flip the y
-		setPosition(getX() * 32, (32 - getY() - 1) * 32);
+		setPosition(getX() * 32, ( getY()) * 32);
 	}
 	
 	/**
