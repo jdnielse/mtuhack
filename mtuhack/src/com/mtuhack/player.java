@@ -20,7 +20,7 @@ public class player extends character{
 	public player(mtuhackgame p) {
 		super(p);
 		textureRegion = Textures.player;
-		weapon = "Dagger";
+		weapon = "Greatsword";
 		assignclass("Fighter");
 		hp = maxhp;
 

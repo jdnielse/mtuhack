@@ -9,11 +9,12 @@ public class Slimes extends monster{
 	public Slimes(mtuhackgame p) {
 		super(p);
 		textureRegion=Textures.slimes;
+		level=3;
+		AC=13;
+		hp=20;
+		xp=30;
+
 	}
-	int level=3;
-	int AC=13;
-	int hp=20;
-	int xp=30;
 	int v_rad=3;
 	int act_count=0;
 	int chase_count=0;

@@ -18,6 +18,7 @@ public class Troll extends monster{
 	
 
 	public void act(float delta){
+		if(dead)return;
 		super.act(delta);
 		boolean move=false;
 		if(Math.random()>.5){

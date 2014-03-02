@@ -16,7 +16,10 @@ public class DragonAdult extends monster{
 		v_rad=8;
 	}
 	
-
+	public void act(float delta){
+		if(dead)return;
+		chase();
+	}
 	public void attack(int playerAC){
 		double attackroll1=(Math.random()*20);
 		int attackroll=(int) Math.ceil(attackroll1);

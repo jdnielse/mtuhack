@@ -3,6 +3,7 @@ package com.mtuhack;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.mtuhack.monsters.DragonAdult;
 import com.mtuhack.monsters.Kobolds;
 import com.mtuhack.monsters.Slimes;
 import com.mtuhack.monsters.Troll;
@@ -36,6 +37,13 @@ public class hackinput implements InputProcessor{
 			game.world.addActor(s);
 			handled=true;
 			break;
+		case Keys.D:
+			//spawn a dragon at a set location
+			DragonAdult da = new DragonAdult(game);
+			da.setPosition(10*32, 0);
+			game.world.addActor(da);
+			handled=true;
+			break;
 		case Keys.DOWN:
 			moved = game.p.moveDown();
 			if(!moved){
@@ -53,18 +61,51 @@ public class hackinput implements InputProcessor{
 			break;
 		case Keys.RIGHT:
 			moved = game.p.moveRight();
+			if(!moved){
+				Node right = game.activeMap.getRight(game.p.x, game.p.y);
+				//check if its an enemy
+				for(Actor c:game.world.getActors()){
+					if(c.getX()==right.getX()&&c.getY()==right.getY()){
+						if(c instanceof monster){
+							game.p.attack((monster) c);
+						}
+					}
+				}
+			}
 			handled=true;
 			break;
 		case Keys.UP:
 			moved = game.p.moveUp();
+			if(!moved){
+				Node up = game.activeMap.getUp(game.p.x, game.p.y);
+				//check if its an enemy
+				for(Actor c:game.world.getActors()){
+					if(c.getX()==up.getX()&&c.getY()==up.getY()){
+						if(c instanceof monster){
+							game.p.attack((monster) c);
+						}
+					}
+				}
+			}
 			handled=true;
 			break;
 		case Keys.LEFT:
 			moved = game.p.moveLeft();
+			if(!moved){
+				Node left = game.activeMap.getLeft(game.p.x, game.p.y);
+				//check if its an enemy
+				for(Actor c:game.world.getActors()){
+					if(c.getX()==left.getX()&&c.getY()==left.getY()){
+						if(c instanceof monster){
+							game.p.attack((monster) c);
+						}
+					}
+				}
+			}
 			handled=true;
 			break;
-			default:
-				return false;
+		default:
+			return false;
 		}
 		game.world.act();	
 		return handled;
