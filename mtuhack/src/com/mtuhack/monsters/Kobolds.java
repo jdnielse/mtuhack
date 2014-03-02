@@ -9,16 +9,16 @@ public class Kobolds extends monster{
 	public Kobolds(mtuhackgame p) {
 		super(p);
 		textureRegion = Textures.kobold;
-		//setWidth(16);
-		//setHeight(16);
+		level=2;
+		AC=15;
+		hp=12;
+		xp=20;
+		v_rad=6;
 	}
-	int level=2;
-	int AC=15;
-	int hp=12;
-	int xp=20;
-	int v_rad=6;
+
 
 	public void act(float delta){
+		if(dead)return;
 		super.act(delta);
 		boolean move=false;
 		if(Math.random()>.5){

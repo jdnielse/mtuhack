@@ -9,7 +9,7 @@ import java.util.Map;
  */
 public class player extends character{
 	Map<String,Integer>stats;
-	int maxhp;
+	int maxhp = 10;
 	String classes;
 	String weapon;
 	/**
@@ -20,6 +20,9 @@ public class player extends character{
 	public player(mtuhackgame p) {
 		super(p);
 		textureRegion = Textures.player;
+		weapon = "Dagger";
+		assignclass("Fighter");
+		hp = maxhp;
 
 	}
 	public void assignclass(String classname){
@@ -29,13 +32,15 @@ public class player extends character{
 	public void levelup(){
 		maxhp=maxhp+StatRoller.hitpoint(stats.get("CON"),classes);	
 	}
-	public void attack(int enemyAC){
+
+	public void attack(monster m){
 		double attackroll1=(Math.random()*20);
 		int attackroll=(int) Math.ceil(attackroll1);
+		int hit, damage;
 		switch(weapon){
 		case "Longsword":
-			int damage=weapons.longsword()+stats.get("STR");
-			int hit=attackroll+stats.get("STR");
+			damage=weapons.longsword()+stats.get("STR");
+			hit=attackroll+stats.get("STR");
 			break;
 		case "Greatsword":
 			damage=weapons.greatsword()+stats.get("STR");
@@ -69,7 +74,21 @@ public class player extends character{
 			damage=weapons.crossbow();
 			hit=attackroll+stats.get("DEX");
 			break;
+		default:
+			damage = 0;
+			hit = 0;
+			break;
 		}
+		if(hit>m.AC){
+			m.hp-=damage;
+			if(m.hp <= 0){
+				//kill it
+				m.setVisible(false);
+				m.setPosition(-100, -100);
+				m.dead = true;
+			}
+		}
+		System.out.println("hit: "+hit+" damage: "+damage+" m.ac: "+m.AC+" m.hp: "+m.hp);
 
 	}
 }

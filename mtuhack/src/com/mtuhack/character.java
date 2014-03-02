@@ -12,10 +12,10 @@ public class character extends Actor{
 	protected TextureRegion textureRegion = null;
 
 	protected mtuhackgame game;
-	int hp;
-	int AC;
-	int v_rad;
-	int level;
+	public int hp;
+	public int AC;
+	public int v_rad;
+	public int level;
 
 	//keep track of what direction this is facing
 	String dir = "up";
@@ -24,6 +24,7 @@ public class character extends Actor{
 	//keep track of location in map
 	int x;
 	int y;
+	public boolean dead = false;
 
 	public character(mtuhackgame p){
 		game = p;

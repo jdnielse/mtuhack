@@ -7,7 +7,7 @@ package com.mtuhack;
  *
  */
 public class monster extends character{
-	int xp;
+public int xp;
 
 	/**
 	 * give the monster a texture

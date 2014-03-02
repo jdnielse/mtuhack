@@ -2,6 +2,7 @@ package com.mtuhack;
 
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Input.Keys;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.mtuhack.monsters.Kobolds;
 import com.mtuhack.monsters.Slimes;
 import com.mtuhack.monsters.Troll;
@@ -19,6 +20,7 @@ public class hackinput implements InputProcessor{
 	@Override
 	public boolean keyDown(int keycode) {
 		boolean handled=false;
+		boolean moved = false;
 		switch(keycode){
 		case Keys.NUM_1:
 			//spawn a kobold at a set location
@@ -35,19 +37,31 @@ public class hackinput implements InputProcessor{
 			handled=true;
 			break;
 		case Keys.DOWN:
-			game.p.moveDown();
+			moved = game.p.moveDown();
+			if(!moved){
+				Node down = game.activeMap.getDown(game.p.x, game.p.y);
+				//check if its an enemy
+				for(Actor c:game.world.getActors()){
+					if(c.getX()==down.getX()&&c.getY()==down.getY()){
+						System.out.println(c.getClass().toString());
+						if(c instanceof Kobolds){
+							game.p.attack((Kobolds) c);
+						}
+					}
+				}
+			}
 			handled=true;
 			break;
 		case Keys.RIGHT:
-			game.p.moveRight();
+			moved = game.p.moveRight();
 			handled=true;
 			break;
 		case Keys.UP:
-			game.p.moveUp();
+			moved = game.p.moveUp();
 			handled=true;
 			break;
 		case Keys.LEFT:
-			game.p.moveLeft();
+			moved = game.p.moveLeft();
 			handled=true;
 			break;
 			default:
