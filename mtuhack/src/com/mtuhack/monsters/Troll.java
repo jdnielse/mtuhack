@@ -10,8 +10,8 @@ public class Troll extends monster{
 		super(p);
 		textureRegion=Textures.troll;
 		level=6;
-		AC=22;
-		hp=50;
+		AC=19;
+		hp=40;
 		xp=60;
 		v_rad=7;
 	}
@@ -39,8 +39,8 @@ int act_count=0;
 	public void calcattack(){
 		double attackroll1=(Math.random()*20);
 		int attackroll=(int) Math.ceil(attackroll1);
-		hit=attackroll+8;
-		double damageroll=Math.random()*10;
-		damage=(int) Math.ceil(damageroll)+8;
+		hit=attackroll+5;
+		double damageroll=Math.random()*8;
+		damage=(int) Math.ceil(damageroll)+6;
 	}
 }
