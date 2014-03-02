@@ -7,7 +7,7 @@ import java.util.Random;
  * Keeps player from going out of bounds. 
  * 
  * @author Aurora Seidenwand
- *
+ * 
  */
 public class Map extends Node {
 
@@ -15,6 +15,7 @@ public class Map extends Node {
 	private int width;
 	private int height;
 	private Node wall = new Node("wall", false, false); 
+	private Node[][] entrance; 
 
 	/** default constructor */
 	public Map() {	
@@ -94,4 +95,17 @@ public class Map extends Node {
 		
 		return random;
 	}
+
+	private void setEntrance() {
+		entrance = new Map[20][20];
+		for (int w=0; w<20; w++) {
+			for (int h=0; h<20; h++) {
+				if (w<15) {
+					
+				}
+			}
+		}
+		
+	}//end set entrance
+
 }

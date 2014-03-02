@@ -16,7 +16,7 @@ public class mtuhackgame implements ApplicationListener, Screen  {
 	public ArrayList<character> actors;
 	public player p;
 	public hackworld world;
-	
+	public Map activeMap;
 
 	@Override
 	public void render(float delta) {
@@ -31,7 +31,8 @@ public class mtuhackgame implements ApplicationListener, Screen  {
 		
 		//setup the font
 		 font = new BitmapFont();
-		 
+		//create the map
+		activeMap = new Map();
 		//create the player
 		p = new player(this);
 		//create the game stage
