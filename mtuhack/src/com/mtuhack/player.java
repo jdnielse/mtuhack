@@ -29,7 +29,7 @@ public class player extends character{
 		textureRegion = Textures.player;
 		weapon = "Greatsword";
 		assignclass();
-		armor="Fullplate";
+		armor="Cloth";
 	}
 	public void assignclass() {
 		game.mess = "Choose a class:\n7 Fighter   8 Thief   9 Wizard   0 Brute   - Ranger";
@@ -49,6 +49,28 @@ public class player extends character{
 	}
 	public void levelup(){
 		maxhp=maxhp+StatRoller.hitpoint(stats.get("CON"),classes);	
+	}
+	
+	@Override
+	public void kill(){
+
+		updatePos();
+		//make occupied node unwalkable 
+		game.activeMap.getNode(x, y).setWalk(true);
+
+		setPosition(-100, -100);
+		dead = true;
+		
+		game.scroll = 0;
+		game.in.hitMid = false;
+		
+		
+		game.mess2 = "You died! Play again, it's easy";
+		Textures.player = new TextureRegion(new Texture(Gdx.files.internal("assets/player.png")));
+		game.p = new player(game);
+		game.p.setPosition(8*32,19*32);
+		game.world.addActor(game.p);
+		
 	}
 
 	public void attack(monster m){

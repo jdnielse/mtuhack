@@ -24,6 +24,7 @@ public class mtuhackgame implements ApplicationListener, Screen  {
 	public String mess3 = "";
 	public String mess4="";
 	int scroll = 0;
+	public hackinput in;
 
 	@Override
 	public void render(float delta) {
@@ -51,11 +52,12 @@ public class mtuhackgame implements ApplicationListener, Screen  {
 		//add the player to the stage
 		world.addActor(p);
 		p.setPosition(8*32,19*32);
-		p.setWidth(32);
-		p.setHeight(32);
+//		p.setWidth(32);
+//		p.setHeight(32);
 		set = new settings();
 		//set up the input stuff
-    	Gdx.input.setInputProcessor(new hackinput(this));
+		in = new hackinput(this);
+    	Gdx.input.setInputProcessor(in);
 	}
 
 	@Override

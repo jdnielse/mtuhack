@@ -7,7 +7,6 @@ import com.mtuhack.monsters.DragonAdult;
 import com.mtuhack.monsters.Kobolds;
 import com.mtuhack.monsters.Skeleton;
 import com.mtuhack.monsters.Slimes;
-import com.mtuhack.monsters.Troll;
 
 public class hackinput implements InputProcessor{
 	
