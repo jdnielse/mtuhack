@@ -20,7 +20,7 @@ public class Map{
 	public Node[][] theMap;
 	private int width;
 	private int height;
-	private Node wall = new Node("walld", false, false, false,-1,-1); 
+	private Node wall = new Node("walld", false, false,-1,-1); 
 	public Node[][] entrance;
 	public Node[][] archway;
 	public Node[][] riverofdoom;
@@ -28,14 +28,9 @@ public class Map{
 
 	/** default constructor */
 	public Map() {	
-		theMap = new Node[20][20];	
-		width = 20;
+		width = 60;
 		height = 20;
-		for(int i=0; i<width; i++) {
-			for(int j=0; j<height; j++) {
-				theMap[i][j] = new Node();
-			}
-		}
+		setMap();
 	}//end default constructor
 
 	/** number of nodes by number of nodes */
@@ -60,7 +55,7 @@ public class Map{
 	}
 
 	public void setMap() {
-		theMap = new Node[20][20];
+		theMap = new Node[60][20];
 		int w=0;
 		int h=19;
 		String type;
@@ -73,47 +68,47 @@ public class Map{
 			return;
 		}
 		scanner.useDelimiter(" ");
-		int last = 19;
+		//int last = 59;
 		while (scanner.hasNext()) {
 			type = scanner.next();
 			type = type.replace("\n", "");
 			type = type.trim();
 
 			if (type.equals("000")) { //unwalkable floor
-				theMap[w][h] = new Node("floor",false,false,false,w,h);
+				theMap[w][h] = new Node("floor",false,false,w,h);
 				w++;
 			}else
 				if (type.equals("010")) { //walkable floor
-					theMap[w][h] = new Node("floor",true,false,false,w,h);
+					theMap[w][h] = new Node("floor",true,false,w,h);
 					w++;
 				}else
 					if (type.equals("300")) { //unwalkable water
-						theMap[w][h] = new Node("water",false,false,false,w,h);
+						theMap[w][h] = new Node("water",false,false,w,h);
 						w++;
 					}else
 						if (type.equals("310")) { //walkable water
-							theMap[w][h] = new Node("water",true,false,false,w,h);
+							theMap[w][h] = new Node("water",true,false,w,h);
 							w++;
 						}else
 							if (type.equals("100")) { //unwalkable wall
-								theMap[w][h] = new Node("wall",false,false,false,w,h);
+								theMap[w][h] = new Node("wall",false,false,w,h);
 								w++;
 							}else
 								if (type.equals("110")) { //walkable wall
-									theMap[w][h] = new Node("wall",true,false,false,w,h);
+									theMap[w][h] = new Node("wall",true,false,w,h);
 									w++;
 								}else
 									if (type.equals("200")) { //unwalkable lava
-										theMap[w][h] = new Node("lava",false,false,false,w,h);
+										theMap[w][h] = new Node("lava",false,false,w,h);
 										w++;
 									}else
 										if (type.equals("210")) { //walkable lava
-											theMap[w][h] = new Node("lava",true,false,false,w,h);
+											theMap[w][h] = new Node("lava",true,false,w,h);
 											w++;
 										}else{
 											System.out.println("unhandled case: ["+type+"]");
 										}
-			if (w>19) {
+			if (w>59) {
 				w=0;
 				h--;
 			}
@@ -122,7 +117,7 @@ public class Map{
 		scanner.close();
 	}
 	
-	public Node[][] getEntranceMap() {
+	/*public Node[][] getEntranceMap() {
 		if(entrance==null){
 			setEntrance();
 		}
@@ -145,7 +140,7 @@ public class Map{
 		this.theMap = riverofdoom;
 		return riverofdoom;
 	}
-
+	 */
 	// get neighbors methods
 	public Node getUp(int w, int h) {
 		if ( h+1>=height ) {
@@ -213,7 +208,6 @@ public class Map{
 		Node random; 
 		Random generator = new Random();
 		String type;
-		boolean n = false;
 		//three node types
 		int t = generator.nextInt(3);
 		if (t == 0) { type = "floor"; }
@@ -224,11 +218,11 @@ public class Map{
 		boolean w = generator.nextBoolean(); 
 		//two options for interaction
 		boolean i = generator.nextBoolean();
-		random = new Node(type, w, i, n,x,y);
+		random = new Node(type, w, i,x,y);
 
 		return random;
 	}
-
+	/*
 	private void setEntrance() {
 		entrance = new Node[20][20];
 		int w=0;
@@ -432,6 +426,6 @@ public class Map{
 
 	}//end set riverOfDoom
 
-	
+	*/
 
 }

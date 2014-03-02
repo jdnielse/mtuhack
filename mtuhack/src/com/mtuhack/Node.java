@@ -24,10 +24,10 @@ public class Node extends Actor{
 	
 	/** Creates a walkable floor node that cannot be interacted with */
 	public Node() {
-		this("floor", true, false, false,0,0);
+		this("floor", true, false,0,0);
 	}
 	/** Creates a node with the given element and next node. */
-	public Node(String e, boolean w, boolean i, boolean n, int x, int y) {
+	public Node(String e, boolean w, boolean i, int x, int y) {
 		setPosition(x,y);
 		updatePosition();
 		mtuhackgame.g.world.addActor(this);
@@ -35,7 +35,7 @@ public class Node extends Actor{
 		element = e;
 		walkable = w;
 		interact = i;
-		nextMap = n;
+		//nextMap = n;
 		switch(e){
 		case "floor":
 			texture = Textures.walk;
