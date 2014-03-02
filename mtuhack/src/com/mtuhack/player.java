@@ -29,6 +29,7 @@ public class player extends character{
 		textureRegion = Textures.player;
 		weapon = "Greatsword";
 		assignclass();
+		level = 0;
 		armor="Cloth";
 	}
 	public void assignclass() {
@@ -43,14 +44,58 @@ public class player extends character{
 			assigned=true;
 			game.mess = "";
 			levelup();
-			hp = maxhp;
-			setAC(armor);
 		}
 	}
 	public void levelup(){
+		//pick a stat to add 1 to
+		level++;
+		double rand = Math.random();
+		switch(classes){
+		case "Fighter":
+			if(rand>(4/9.0)){
+				stats.put("STR", stats.get("STR")+1);
+			}else if(rand < (3/9.0)){
+				stats.put("CON", stats.get("CON")+1);
+			}else{
+				stats.put("DEX", stats.get("DEX")+1);
+			}
+			break;
+		case "Thief":
+		case "Ranger":
+			if(rand>(4/9.0)){
+				stats.put("DEX", stats.get("DEX")+1);
+			}else if(rand < (3/9.0)){
+				stats.put("CON", stats.get("CON")+1);
+			}else{
+				stats.put("STR", stats.get("STR")+1);
+			}
+			break;
+		case "Wizard":
+			if(rand>(4/9.0)){
+				stats.put("INT", stats.get("INT")+1);
+			}else if(rand < (3/9.0)){
+				stats.put("DEX", stats.get("DEX")+1);
+			}else{
+				stats.put("CON", stats.get("CON")+1);
+			}
+			break;
+		case "Brute":
+			if(rand>(4/9.0)){
+				stats.put("CON", stats.get("CON")+1);
+			}else if(rand < (3/9.0)){
+				stats.put("STR", stats.get("STR")+1);
+			}else{
+				stats.put("DEX", stats.get("DEX")+1);
+			}
+			break;
+		}
+
 		maxhp=maxhp+StatRoller.hitpoint(stats.get("CON"),classes);	
+
+		hp = maxhp;
+		setAC(armor);
 	}
-	
+
 	@Override
 	public void kill(){
 
@@ -60,17 +105,17 @@ public class player extends character{
 
 		setPosition(-100, -100);
 		dead = true;
-		
+
 		game.scroll = 0;
 		game.in.hitMid = false;
-		
-		
+
+
 		game.mess2 = "You died! Play again, it's easy";
 		Textures.player = new TextureRegion(new Texture(Gdx.files.internal("assets/player.png")));
 		game.p = new player(game);
 		game.p.setPosition(8*32,19*32);
 		game.world.addActor(game.p);
-		
+
 	}
 
 	public void attack(monster m){
@@ -126,6 +171,9 @@ public class player extends character{
 				//kill it
 				m.kill();
 				totalxp=totalxp+m.xp;
+				if(totalxp >= level*50){
+					levelup();
+				}
 				game.mess = "Killed and ";
 			}
 			game.mess += "Hit "+(m.getClass().toString().substring(m.getClass().toString().lastIndexOf('.'), m.getClass().toString().length())+" with a "+hit+" to hit and did "+damage+" damage!");
