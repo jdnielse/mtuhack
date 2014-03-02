@@ -1,5 +1,11 @@
 package com.mtuhack;
 
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.scenes.scene2d.Actor;
+
 /**
  * Node of Dungeon Map which keeps track of what type of node it is, 
  * if the player can walk on it, and if the player can interact with it.
@@ -7,8 +13,9 @@ package com.mtuhack;
  * @author Aurora Seidenwand
  *
  */
-public class Node {
+public class Node extends Actor{
 	// Instance variables:
+	TextureRegion texture;
 	private String element; // wall, floor, lava, water
 	private boolean walkable; // true = can walk
 	private boolean interact; // true = can interact
@@ -22,6 +29,38 @@ public class Node {
 		element = e;
 		walkable = w;
 		interact = i;
+		switch(e){
+		case "floor":
+			texture = Textures.walk;
+			break;
+		case "wall":
+			texture = Textures.wall;
+			break;
+		case "lava":
+			texture = Textures.lava;
+			break;
+		case "water":
+			texture = Textures.water;
+			break;	
+		}
+		setWidth(32);
+		setHeight(32);
+		
+	}
+	
+	public void updatePosition() {
+		//THe map is "inverted" per se, so flip the y
+		setPosition(getX() * 32, (32 - getY() - 1) * 32);
+	}
+	
+	/**
+	 * Default draw method, just draws the texture
+	 */
+	@Override
+	public void draw (Batch batch, float parentAlpha) {
+		Color color = getColor();
+		batch.setColor(color.g, color.g, color.b, color.a * parentAlpha);
+		batch.draw(texture, getX(), getY(), getOriginX(), getOriginY(), getWidth(), getHeight(), getScaleX(), getScaleY(), getRotation());
 	}
 	
 	// Accessor methods:

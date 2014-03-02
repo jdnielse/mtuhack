@@ -19,7 +19,7 @@ public class player extends character{
 	 */
 	public player(mtuhackgame p) {
 		super(p);
-		textureRegion = Textures.solid;
+		textureRegion = Textures.player;
 
 	}
 	public void assignclass(String classname){

@@ -5,13 +5,15 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 public class Textures {
-	public static TextureRegion gridTopLeft;
-	public static TextureRegion solid;
+	public static TextureRegion wall,water,walk,lava,player;
 	
 	public Textures(mtuhackgame parent) {
 		//Time to load the textures
-	    //gridTopLeft 	= new TextureRegion(new Texture(Gdx.files.internal("assets/topLeft.png")));
-	    //solid			= new TextureRegion(new Texture(Gdx.files.internal("assets/solid.png")));
+		wall = new TextureRegion(new Texture(Gdx.files.internal("assets/wall.png")));
+		water = new TextureRegion(new Texture(Gdx.files.internal("assets/water.png")));
+		walk = new TextureRegion(new Texture(Gdx.files.internal("assets/walk.png")));
+		lava = new TextureRegion(new Texture(Gdx.files.internal("assets/lava.png")));
+		player = new TextureRegion(new Texture(Gdx.files.internal("assets/player.png")));
 
 		//used to restrict what pixels are seen of the image
 	   // solid.setRegion(0, 0, 6, 6);

@@ -34,13 +34,14 @@ public class character extends Actor{
 	 */
 	@Override
 	public void act(float delta){
-		
+
 	}
 	
 	/**
 	 * Default draw method, just draws the texture
 	 */
 	public void draw (SpriteBatch batch, float parentAlpha) {
+		System.out.println("act");
 		Color color = getColor();
 		batch.setColor(color.g, color.g, color.b, color.a * parentAlpha);
 		batch.draw(textureRegion, getX(), getY(), getOriginX(), getOriginY(), getWidth(), getHeight(), getScaleX(), getScaleY(), getRotation());

@@ -16,6 +16,7 @@ public class mtuhackgame implements ApplicationListener, Screen  {
 	public ArrayList<character> actors;
 	public player p;
 	public hackworld world;
+	public settings set;
 	public Map activeMap;
 
 	@Override
@@ -28,18 +29,20 @@ public class mtuhackgame implements ApplicationListener, Screen  {
 	public void create() {
 		// load all the textures
 		textures = new Textures(this);
-		
-		//setup the font
-		 font = new BitmapFont();
-		//create the map
-		activeMap = new Map();
-		//create the player
-		p = new player(this);
 		//create the game stage
 		world = new hackworld();
+		
+		//setup the font
+		font = new BitmapFont();
+		//create the map
+		activeMap = new Map(40,40,this);
+		//create the player
+		p = new player(this);
+
 		//add the player to the stage
 		world.addActor(p);
 		
+		set = new settings();
 		//set up the input stuff
     	Gdx.input.setInputProcessor(new hackinput(this));
 	}
@@ -66,13 +69,14 @@ public class mtuhackgame implements ApplicationListener, Screen  {
 	public void render() {
 		//clear the background
         Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
+        spriteBatch.begin();
         world.act(Gdx.graphics.getDeltaTime());
         world.draw();
+        spriteBatch.end();
         spriteBatch.begin();
         font.setColor(1.0f, 0.0f, 1.0f, 1.0f);
-        font.draw(spriteBatch, ""+Gdx.graphics.getDeltaTime(), (int)(1200*Math.random()), (int)(600*Math.random()));
+        font.draw(spriteBatch, ""+Gdx.graphics.getDeltaTime(), 0, 15);
         spriteBatch.end();
-        System.out.println(Gdx.graphics.getDeltaTime());
 	}
 
 	@Override

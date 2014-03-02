@@ -1,6 +1,9 @@
 package com.mtuhack;
 
+import java.awt.Point;
 import java.util.Random;
+
+import com.badlogic.gdx.scenes.scene2d.Stage;
 
 /**
  * Creates a two-dimensional map of nodes and keeps track of node relations
@@ -9,13 +12,14 @@ import java.util.Random;
  * @author Aurora Seidenwand
  * 
  */
-public class Map {
+public class Map{
 
 	private Node[][] theMap;
 	private int width;
 	private int height;
 	private Node wall = new Node("wall", false, false); 
 	private Node[][] entrance; 
+	private mtuhackgame g;
 
 	/** default constructor */
 	public Map() {	
@@ -30,13 +34,18 @@ public class Map {
 	}//end default constructor
 
 	/** number of nodes by number of nodes */
-	public Map(int w, int h) {
+	public Map(int w, int h, mtuhackgame game) {
+		g = game;
 		theMap = new Node[w][h];
 		width = w;
 		height = h;
 		for(int i=0; i<width; i++) {
 			for(int j=0; j<height; j++) {
 				theMap[i][j] = nodeGenerator();
+				theMap[i][j].setPosition(i, j);
+				theMap[i][j].updatePosition();
+				
+				g.world.addActor(theMap[i][j]);
 			}
 		}
 	}//end constructor
@@ -50,6 +59,9 @@ public class Map {
 	}
 	
 	public Node[][] getEntranceMap() {
+		if(entrance==null){
+			setEntrance();
+		}
 		return entrance;
 	}
 
@@ -77,6 +89,20 @@ public class Map {
 			return wall;
 		}
 		return theMap[w+1][h];
+	}
+	
+	/**
+	 * Gets the tile at the given point on the screen
+	 * @param p
+	 * @return
+	 */
+	//X is position in pixels from the left of the screen
+	//y is the position in pixels from the bottom of the MINABLE GRID
+	public Node getNodeAtScreenPoint(Point p) {
+		int xGrid = p.x / width;
+		int yGrid = p.y / height;
+		yGrid = height - yGrid;
+		return theMap[xGrid][yGrid];
 	}
 
 	//node generator
