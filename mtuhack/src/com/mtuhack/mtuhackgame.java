@@ -39,7 +39,7 @@ public class mtuhackgame implements ApplicationListener, Screen  {
 		//create the map
 		//activeMap = new Map(40,40,this);
 		Map m = new Map();
-		m.getEntranceMap();
+		m.getMap();
 		activeMap = m;
 		//create the player
 		p = new player(this);
