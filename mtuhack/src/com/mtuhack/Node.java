@@ -73,7 +73,9 @@ public class Node extends Actor{
 		batch.setColor(color.g, color.g, color.b, color.a * parentAlpha);
 		batch.draw(texture, getX() + mtuhackgame.g.scroll, getY(), getOriginX(), getOriginY(), getWidth(), getHeight(), getScaleX(), getScaleY(), getRotation());
 	}
-	
+	public boolean iswater(){
+		return element.equals("water");
+	}
 	// Accessor methods:
 	public String getElement() {
 		return element; 

@@ -92,9 +92,9 @@ public class mtuhackgame implements ApplicationListener, Screen  {
         font.setColor(0.5f, 0.5f, 1.0f, 1.0f);
         font.draw(spriteBatch, mess2, 0, 15);
         font.setColor(1.0f, 0.25f, 0.25f, 1.0f);
-        font.draw(spriteBatch, mess3, 32*20-60, 30);
+        font.draw(spriteBatch, mess3, Gdx.graphics.getWidth()-60, 30);
         font.setColor(0.5f, 0.5f, 1.0f, 1.0f);
-        font.draw(spriteBatch, mess4, 32*20-60, 15);
+        font.draw(spriteBatch, mess4, Gdx.graphics.getWidth()-60, 15);
         spriteBatch.end();
 	}
 

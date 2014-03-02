@@ -22,8 +22,8 @@ public class character extends Actor{
 	//keep track of what node it is on
 	Node current;
 	//keep track of location in map
-	int x;
-	int y;
+	public int x;
+	public int y;
 	public boolean dead = false;
 
 	public character(mtuhackgame p){

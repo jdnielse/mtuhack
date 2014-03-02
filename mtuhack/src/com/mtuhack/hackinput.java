@@ -5,16 +5,17 @@ import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.mtuhack.monsters.DragonAdult;
 import com.mtuhack.monsters.Kobolds;
+import com.mtuhack.monsters.Nagas;
 import com.mtuhack.monsters.Skeleton;
 import com.mtuhack.monsters.Slimes;
 
 public class hackinput implements InputProcessor{
-	
+
 	mtuhackgame game;
 	public hackinput(mtuhackgame g){
 		game = g;
 	}
-	
+
 	public boolean hitMid = false;
 
 	/**
@@ -42,8 +43,15 @@ public class hackinput implements InputProcessor{
 		case Keys.D:
 			//spawn a dragon at a set location
 			DragonAdult da = new DragonAdult(game);
-			da.setPosition(10*32, 0);
+			da.setPosition(20*32, 0);
 			game.world.addActor(da);
+			handled=true;
+			break;
+		case Keys.N:
+			//spawns a naga
+			Nagas n=new Nagas(game);
+			n.setPosition(20*32, 5*32);
+			game.world.addActor(n);
 			handled=true;
 			break;
 		case Keys.DOWN:
