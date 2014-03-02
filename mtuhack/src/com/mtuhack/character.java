@@ -11,6 +11,10 @@ public class character extends Actor{
 	TextureRegion textureRegion = null;
 	
 	mtuhackgame parent;
+	int hp;
+	int AC;
+	int v_rad;
+	int level;
 	
 	//keep track of what direction this is facing
 	String dir = "up";
