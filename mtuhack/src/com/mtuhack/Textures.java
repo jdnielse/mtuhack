@@ -5,7 +5,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 public class Textures {
-	public static TextureRegion wall,water,walk,lava,player,kobold,orc,skeleton,dragonadult,dragonyoung,slimes,troll,goblin,giant;
+	public static TextureRegion wall,water,walk,lava,bridge,player,kobold,orc,skeleton,dragonadult,dragonyoung,slimes,troll,goblin,giant;
 	
 	public Textures(mtuhackgame parent) {
 		//Time to load the textures
@@ -13,6 +13,7 @@ public class Textures {
 		water = new TextureRegion(new Texture(Gdx.files.internal("assets/water.png")));
 		walk = new TextureRegion(new Texture(Gdx.files.internal("assets/walk.png")));
 		lava = new TextureRegion(new Texture(Gdx.files.internal("assets/lava.png")));
+		bridge = new TextureRegion(new Texture(Gdx.files.internal("assets/bridge.png")));
 		player = new TextureRegion(new Texture(Gdx.files.internal("assets/player.png")));
 		kobold = new TextureRegion(new Texture(Gdx.files.internal("assets/Kobold.png")));
 		orc = new TextureRegion(new Texture(Gdx.files.internal("assets/Orc.png")));

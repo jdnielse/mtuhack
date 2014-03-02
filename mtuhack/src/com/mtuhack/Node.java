@@ -16,7 +16,7 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 public class Node extends Actor{
 	// Instance variables:
 	TextureRegion texture;
-	private String element; // wall, floor, lava, water
+	private String element; // wall, floor, lava, water, bridge
 	private boolean walkable; // true = can walk
 	private boolean interact; // true = can interact
 	private boolean nextMap; // true = can go to next map
@@ -49,7 +49,10 @@ public class Node extends Actor{
 			break;
 		case "water":
 			texture = Textures.water;
-			break;	
+			break;
+		case "bridge":
+			texture = Textures.bridge;
+			break;
 		}
 		setWidth(32);
 		setHeight(32);

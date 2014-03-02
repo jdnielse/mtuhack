@@ -28,7 +28,7 @@ public class Map{
 
 	/** default constructor */
 	public Map() {	
-		width = 60;
+		width = 80;
 		height = 20;
 		setMap();
 	}//end default constructor
@@ -55,8 +55,8 @@ public class Map{
 	}
 
 	public void setMap() {
-		theMap = new Node[60][20];
-		width = 60;
+		theMap = new Node[80][20];
+		width = 80;
 		height = 20;
 		int w=0;
 		int h=19;
@@ -70,7 +70,7 @@ public class Map{
 			return;
 		}
 		scanner.useDelimiter(" ");
-		//int last = 59;
+		//int last = 79;
 		while (scanner.hasNext()) {
 			type = scanner.next();
 			type = type.replace("\n", "");
@@ -107,10 +107,14 @@ public class Map{
 										if (type.equals("210")) { //walkable lava
 											theMap[w][h] = new Node("lava",true,false,w,h);
 											w++;
-										}else{
-											System.out.println("unhandled case: ["+type+"]");
-										}
-			if (w>59) {
+										}else
+											if (type.equals("410")) { //walkable bridge
+												theMap[w][h] = new Node("bridge",true,false,w,h);
+												w++;
+											}else{
+												System.out.println("unhandled case: ["+type+"]");
+											}
+			if (w>79) {
 				w=0;
 				h--;
 			}
@@ -118,7 +122,7 @@ public class Map{
 		}
 		scanner.close();
 	}
-	
+
 	/*public Node[][] getEntranceMap() {
 		if(entrance==null){
 			setEntrance();
@@ -146,45 +150,25 @@ public class Map{
 	// get neighbors methods
 	public Node getUp(int w, int h) {
 		if ( h+1>=height ) {
-			if (theMap[w][h].getNextMap()) { 
-				return theMap[w][h].getNext();
-			}
-			else {
-				return wall;
-			}
+			return wall;
 		}
 		return theMap[w][h+1];
 	}
 	public Node getDown(int w, int h) {
 		if ( h-1<0 ) {
-			if (theMap[w][h].getNextMap()) { 
-				return theMap[w][h].getNext();
-			}
-			else {
-				return wall;
-			}
+			return wall;			
 		}
 		return theMap[w][h-1];
 	}
 	public Node getLeft(int w, int h) {
 		if ( w-1<0 ) {
-			if (theMap[w][h].getNextMap()) { 
-				return theMap[w][h].getNext();
-			}
-			else {
-				return wall;
-			}
+			return wall;
 		}
 		return theMap[w-1][h];
 	}
 	public Node getRight(int w, int h) {
 		if ( w+1>=width ) {
-			if (theMap[w][h].getNextMap()) { 
-				return theMap[w][h].getNext();
-			}
-			else {
-				return wall;
-			}
+			return wall;
 		}
 		return theMap[w+1][h];
 	}
@@ -428,6 +412,6 @@ public class Map{
 
 	}//end set riverOfDoom
 
-	*/
+	 */
 
 }
