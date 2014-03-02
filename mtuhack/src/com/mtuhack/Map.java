@@ -17,7 +17,7 @@ public class Map{
 	public Node[][] theMap;
 	private int width;
 	private int height;
-	private Node wall = new Node("wall", false, false,-1,-1); 
+	private Node wall = new Node("walld", false, false,-1,-1); 
 	public Node[][] entrance;
 	public Node[][] archway;
 	private mtuhackgame g;
@@ -65,25 +65,25 @@ public class Map{
 
 	// get neighbors methods
 	public Node getUp(int w, int h) {
-		if ( !(h<height) ) {
+		if ( h+1>=height ) {
 			return wall;
 		}
 		return theMap[w][h+1];
 	}
 	public Node getDown(int w, int h) {
-		if ( !(h>=0) ) {
+		if ( h-1<0 ) {
 			return wall;
 		}
 		return theMap[w][h-1];
 	}
 	public Node getLeft(int w, int h) {
-		if ( !(w>=0) ) {
+		if ( w-1<0 ) {
 			return wall;
 		}
 		return theMap[w-1][h];
 	}
 	public Node getRight(int w, int h) {
-		if ( !(w<width) ) {
+		if ( w+1>=width ) {
 			return wall;
 		}
 		return theMap[w+1][h];
@@ -125,6 +125,8 @@ public class Map{
 	}
 
 	private void setEntrance() {
+		height = 20;
+		width = 20;
 		entrance = new Node[20][20];
 		for (int w=0; w<20; w++) {
 			for (int h=0; h<20; h++) {

@@ -38,6 +38,7 @@ public class Node extends Actor{
 			texture = Textures.walk;
 			break;
 		case "wall":
+		case "walld":
 			texture = Textures.wall;
 			break;
 		case "lava":

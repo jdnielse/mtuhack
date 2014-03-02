@@ -9,7 +9,7 @@ public class hackinput implements InputProcessor{
 	public hackinput(mtuhackgame g){
 		game = g;
 	}
-	
+
 	/**
 	 * The one we're using, just detects when a key is pressed
 	 */
@@ -19,7 +19,7 @@ public class hackinput implements InputProcessor{
 		case Keys.DOWN:
 			Node down=game.activeMap.getDown((int)game.p.getX()/32, (int)game.p.getY()/32);
 			if (down.getCanWalk()){
-			game.p.setPosition(game.p.getX(),game.p.getY()-32);
+				game.p.setPosition(game.p.getX(),game.p.getY()-32);
 			}
 			return true;
 		case Keys.RIGHT:
@@ -30,8 +30,9 @@ public class hackinput implements InputProcessor{
 			return true;
 		case Keys.UP:
 			Node up=game.activeMap.getUp((int)game.p.getX()/32, (int)game.p.getY()/32);
+			System.out.println(game.p.getX()/32+", "+game.p.getY()/32);
 			if (up.getCanWalk()){
-			game.p.setPosition(game.p.getX(),game.p.getY()+32);
+				game.p.setPosition(game.p.getX(),game.p.getY()+32);
 			}
 			return true;
 		case Keys.LEFT:

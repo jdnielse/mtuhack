@@ -44,7 +44,7 @@ public class mtuhackgame implements ApplicationListener, Screen  {
 		p = new player(this);
 		//add the player to the stage
 		world.addActor(p);
-		p.setPosition(0,19*32);
+		p.setPosition(0,18*32);
 		p.setWidth(32);
 		p.setHeight(32);
 		set = new settings();
