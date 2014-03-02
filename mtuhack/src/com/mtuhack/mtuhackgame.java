@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -19,10 +20,14 @@ public class mtuhackgame implements ApplicationListener, Screen  {
 	public hackworld world;
 	public settings set;
 	public Map activeMap;
-	public String mess = "";
+	public String mess ="";
 	public String mess2="";
-	public String mess3 = "";
+	public String mess3="";
 	public String mess4="";
+	public String mess5="";
+	public String mess6="";
+	public String mess7="";
+	public String mess8="";
 	int scroll = 0;
 	public hackinput in;
 
@@ -87,14 +92,22 @@ public class mtuhackgame implements ApplicationListener, Screen  {
         world.draw();
         spriteBatch.end();
         spriteBatch.begin();
-        font.setColor(1.0f, 0.25f, 0.25f, 1.0f);
+        font.setColor(Color.WHITE);
         font.draw(spriteBatch, mess, 0, 30);
-        font.setColor(0.5f, 0.5f, 1.0f, 1.0f);
+        //font.setColor(0.5f, 0.5f, 1.0f, 1.0f);
         font.draw(spriteBatch, mess2, 0, 15);
-        font.setColor(1.0f, 0.25f, 0.25f, 1.0f);
-        font.draw(spriteBatch, mess3, Gdx.graphics.getWidth()-60, 30);
-        font.setColor(0.5f, 0.5f, 1.0f, 1.0f);
-        font.draw(spriteBatch, mess4, Gdx.graphics.getWidth()-60, 15);
+        //font.setColor(1.0f, 0.25f, 0.25f, 1.0f);
+        font.draw(spriteBatch, mess3, Gdx.graphics.getWidth()-60, 40);
+        //font.setColor(0.5f, 0.5f, 1.0f, 1.0f);
+        font.draw(spriteBatch, mess4, Gdx.graphics.getWidth()-60, 20);
+        //font.setColor(1.0f, 0.25f, 0.25f, 1.0f);
+        font.draw(spriteBatch, mess5, Gdx.graphics.getWidth()-60, 630);
+        //font.setColor(0.5f, 0.5f, 1.0f, 1.0f);
+        font.draw(spriteBatch, mess6, Gdx.graphics.getWidth()-60, 610);
+        //font.setColor(1.0f, 0.25f, 0.25f, 1.0f);
+        font.draw(spriteBatch, mess7, Gdx.graphics.getWidth()-60, 590);
+        //font.setColor(0.5f, 0.5f, 1.0f, 1.0f);
+        font.draw(spriteBatch, mess8, Gdx.graphics.getWidth()-60, 570);
         spriteBatch.end();
 	}
 
