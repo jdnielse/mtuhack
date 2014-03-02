@@ -19,13 +19,14 @@ public class Node extends Actor{
 	private String element; // wall, floor, lava, water
 	private boolean walkable; // true = can walk
 	private boolean interact; // true = can interact
+	private boolean nextMap; // true = can go to next map
 	
 	/** Creates a walkable floor node that cannot be interacted with */
 	public Node() {
-		this("floor", true, false,0,0);
+		this("floor", true, false, false,0,0);
 	}
 	/** Creates a node with the given element and next node. */
-	public Node(String e, boolean w, boolean i, int x, int y) {
+	public Node(String e, boolean w, boolean i, boolean n, int x, int y) {
 		setPosition(x,y);
 		updatePosition();
 		mtuhackgame.g.world.addActor(this);
@@ -33,6 +34,7 @@ public class Node extends Actor{
 		element = e;
 		walkable = w;
 		interact = i;
+		nextMap = n;
 		switch(e){
 		case "floor":
 			texture = Textures.walk;
@@ -78,6 +80,9 @@ public class Node extends Actor{
 	public boolean getCanInteract() {
 		return interact;
 	}
+	public boolean getNextMap() {
+		return nextMap;
+	}
 	
 	// Modifier methods:
 	public void setElement(String newElem) { 
@@ -88,5 +93,8 @@ public class Node extends Actor{
 	}
 	public void setInteract(boolean i) {
 		interact = i;
+	}
+	public void setNextMap(boolean n) {
+		nextMap = n;
 	}
 }

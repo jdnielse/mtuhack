@@ -20,7 +20,7 @@ public class Map{
 	public Node[][] theMap;
 	private int width;
 	private int height;
-	private Node wall = new Node("walld", false, false,-1,-1); 
+	private Node wall = new Node("walld", false, false, false,-1,-1); 
 	public Node[][] entrance;
 	public Node[][] archway;
 	public Node[][] riverofdoom;
@@ -86,25 +86,45 @@ public class Map{
 	// get neighbors methods
 	public Node getUp(int w, int h) {
 		if ( h+1>=height ) {
-			return wall;
+			if (theMap[w][h].getNextMap()) { 
+
+			}
+			else {
+				return wall;
+			}
 		}
 		return theMap[w][h+1];
 	}
 	public Node getDown(int w, int h) {
 		if ( h-1<0 ) {
-			return wall;
+			if (theMap[w][h].getNextMap()) { 
+
+			}
+			else {
+				return wall;
+			}
 		}
 		return theMap[w][h-1];
 	}
 	public Node getLeft(int w, int h) {
 		if ( w-1<0 ) {
-			return wall;
+			if (theMap[w][h].getNextMap()) { 
+
+			}
+			else {
+				return wall;
+			}
 		}
 		return theMap[w-1][h];
 	}
 	public Node getRight(int w, int h) {
 		if ( w+1>=width ) {
-			return wall;
+			if (theMap[w][h].getNextMap()) { 
+
+			}
+			else {
+				return wall;
+			}
 		}
 		return theMap[w+1][h];
 	}
@@ -130,7 +150,7 @@ public class Map{
 		Node random; 
 		Random generator = new Random();
 		String type;
-
+		boolean n = false;
 		//three node types
 		int t = generator.nextInt(3);
 		if (t == 0) { type = "floor"; }
@@ -141,7 +161,7 @@ public class Map{
 		boolean w = generator.nextBoolean(); 
 		//two options for interaction
 		boolean i = generator.nextBoolean();
-		random = new Node(type, w, i,x,y);
+		random = new Node(type, w, i, n,x,y);
 
 		return random;
 	}
@@ -167,39 +187,42 @@ public class Map{
 			type = type.trim();
 
 			if (type.equals("000")) { //unwalkable floor
-				entrance[w][h] = new Node("floor",false,false,w,h);
+				entrance[w][h] = new Node("floor",false,false,false,w,h);
 				w++;
 			}else
 				if (type.equals("010")) { //walkable floor
-					entrance[w][h] = new Node("floor",true,false,w,h);
+					entrance[w][h] = new Node("floor",true,false,false,w,h);
 					w++;
 				}else
-					if (type.equals("300")) { //unwalkable water
-						entrance[w][h] = new Node("water",false,false,w,h);
-						w++;
+					if (type.equals("0101")) {//walkable floor to next map
+						entrance[w][h] = new Node("floor",true,false,true,w,h);
 					}else
-						if (type.equals("310")) { //walkable water
-							entrance[w][h] = new Node("water",true,false,w,h);
+						if (type.equals("300")) { //unwalkable water
+							entrance[w][h] = new Node("water",false,false,false,w,h);
 							w++;
 						}else
-							if (type.equals("100")) { //unwalkable wall
-								entrance[w][h] = new Node("wall",false,false,w,h);
+							if (type.equals("310")) { //walkable water
+								entrance[w][h] = new Node("water",true,false,false,w,h);
 								w++;
 							}else
-								if (type.equals("110")) { //walkable wall
-									entrance[w][h] = new Node("wall",true,false,w,h);
+								if (type.equals("100")) { //unwalkable wall
+									entrance[w][h] = new Node("wall",false,false,false,w,h);
 									w++;
 								}else
-									if (type.equals("200")) { //unwalkable lava
-										entrance[w][h] = new Node("lava",false,false,w,h);
+									if (type.equals("110")) { //walkable wall
+										entrance[w][h] = new Node("wall",true,false,false,w,h);
 										w++;
 									}else
-										if (type.equals("210")) { //walkable lava
-											entrance[w][h] = new Node("lava",true,false,w,h);
+										if (type.equals("200")) { //unwalkable lava
+											entrance[w][h] = new Node("lava",false,false,false,w,h);
 											w++;
-										}else{
-											System.out.println("unhandled case: ["+type+"]");
-										}
+										}else
+											if (type.equals("210")) { //walkable lava
+												entrance[w][h] = new Node("lava",true,false,false,w,h);
+												w++;
+											}else{
+												System.out.println("unhandled case: ["+type+"]");
+											}
 			if (w>19) {
 				w=0;
 				h--;
@@ -230,39 +253,42 @@ public class Map{
 			type = type.trim();
 
 			if (type.equals("000")) { //unwalkable floor
-				archway[w][h] = new Node("floor",false,false,w,h);
+				archway[w][h] = new Node("floor",false,false,false,w,h);
 				w++;
 			}else
 				if (type.equals("010")) { //walkable floor
-					archway[w][h] = new Node("floor",true,false,w,h);
+					archway[w][h] = new Node("floor",true,false,false,w,h);
 					w++;
 				}else
-					if (type.equals("300")) { //unwalkable water
-						archway[w][h] = new Node("water",false,false,w,h);
-						w++;
+					if (type.equals("0101")) {//walkable floor to next map
+						entrance[w][h] = new Node("floor",true,false,true,w,h);
 					}else
-						if (type.equals("310")) { //walkable water
-							archway[w][h] = new Node("water",true,false,w,h);
+						if (type.equals("300")) { //unwalkable water
+							archway[w][h] = new Node("water",false,false,false,w,h);
 							w++;
 						}else
-							if (type.equals("100")) { //unwalkable wall
-								archway[w][h] = new Node("wall",false,false,w,h);
+							if (type.equals("310")) { //walkable water
+								archway[w][h] = new Node("water",true,false,false,w,h);
 								w++;
 							}else
-								if (type.equals("110")) { //walkable wall
-									archway[w][h] = new Node("wall",true,false,w,h);
+								if (type.equals("100")) { //unwalkable wall
+									archway[w][h] = new Node("wall",false,false,false,w,h);
 									w++;
 								}else
-									if (type.equals("200")) { //unwalkable lava
-										archway[w][h] = new Node("lava",false,false,w,h);
+									if (type.equals("110")) { //walkable wall
+										archway[w][h] = new Node("wall",true,false,false,w,h);
 										w++;
 									}else
-										if (type.equals("210")) { //walkable lava
-											archway[w][h] = new Node("lava",true,false,w,h);
+										if (type.equals("200")) { //unwalkable lava
+											archway[w][h] = new Node("lava",false,false,false,w,h);
 											w++;
-										}else{
-											System.out.println("unhandled case: ["+type+"]");
-										}
+										}else
+											if (type.equals("210")) { //walkable lava
+												archway[w][h] = new Node("lava",true,false,false,w,h);
+												w++;
+											}else{
+												System.out.println("unhandled case: ["+type+"]");
+											}
 			if (w>19) {
 				w=0;
 				h--;
@@ -294,39 +320,46 @@ public class Map{
 			type = type.trim();
 
 			if (type.equals("000")) { //unwalkable floor
-				riverofdoom[w][h] = new Node("floor",false,false,w,h);
+				riverofdoom[w][h] = new Node("floor",false,false,false,w,h);
 				w++;
 			}else
 				if (type.equals("010")) { //walkable floor
-					riverofdoom[w][h] = new Node("floor",true,false,w,h);
+					riverofdoom[w][h] = new Node("floor",true,false,false,w,h);
 					w++;
 				}else
-					if (type.equals("300")) { //unwalkable water
-						riverofdoom[w][h] = new Node("water",false,false,w,h);
-						w++;
+					if (type.equals("0101")) {//walkable floor to next map
+						entrance[w][h] = new Node("floor",true,false,true,w,h);
 					}else
-						if (type.equals("310")) { //walkable water
-							riverofdoom[w][h] = new Node("water",true,false,w,h);
+						if (type.equals("300")) { //unwalkable water
+							riverofdoom[w][h] = new Node("water",false,false,false,w,h);
 							w++;
 						}else
-							if (type.equals("100")) { //unwalkable wall
-								riverofdoom[w][h] = new Node("wall",false,false,w,h);
+							if (type.equals("310")) { //walkable water
+								riverofdoom[w][h] = new Node("water",true,false,false,w,h);
 								w++;
 							}else
-								if (type.equals("110")) { //walkable wall
-									riverofdoom[w][h] = new Node("wall",true,false,w,h);
+								if (type.equals("310")) { //walkable water to next map
+									riverofdoom[w][h] = new Node("water",true,false,true,w,h);
 									w++;
 								}else
-									if (type.equals("200")) { //unwalkable lava
-										riverofdoom[w][h] = new Node("lava",false,false,w,h);
+									if (type.equals("100")) { //unwalkable wall
+										riverofdoom[w][h] = new Node("wall",false,false,false,w,h);
 										w++;
 									}else
-										if (type.equals("210")) { //walkable lava
-											riverofdoom[w][h] = new Node("lava",true,false,w,h);
+										if (type.equals("110")) { //walkable wall
+											riverofdoom[w][h] = new Node("wall",true,false,false,w,h);
 											w++;
-										}else{
-											System.out.println("unhandled case: ["+type+"]");
-										}
+										}else
+											if (type.equals("200")) { //unwalkable lava
+												riverofdoom[w][h] = new Node("lava",false,false,false,w,h);
+												w++;
+											}else
+												if (type.equals("210")) { //walkable lava
+													riverofdoom[w][h] = new Node("lava",true,false,false,w,h);
+													w++;
+												}else{
+													System.out.println("unhandled case: ["+type+"]");
+												}
 			if (w>19) {
 				w=0;
 				h--;
