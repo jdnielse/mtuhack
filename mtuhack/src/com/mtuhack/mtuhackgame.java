@@ -45,7 +45,9 @@ public class mtuhackgame implements ApplicationListener, Screen  {
 
 		//add the player to the stage
 		world.addActor(p);
-		
+		p.setPosition(0,0);
+		p.setWidth(32);
+		p.setHeight(32);
 		set = new settings();
 		//set up the input stuff
     	Gdx.input.setInputProcessor(new hackinput(this));
@@ -77,10 +79,10 @@ public class mtuhackgame implements ApplicationListener, Screen  {
         world.act(Gdx.graphics.getDeltaTime());
         world.draw();
         spriteBatch.end();
-        spriteBatch.begin();
-        font.setColor(1.0f, 0.0f, 1.0f, 1.0f);
-        font.draw(spriteBatch, ""+Gdx.graphics.getDeltaTime(), 0, 15);
-        spriteBatch.end();
+//        spriteBatch.begin();
+//        font.setColor(1.0f, 0.0f, 1.0f, 1.0f);
+//        font.draw(spriteBatch, ""+Gdx.graphics.getDeltaTime(), 0, 15);
+//        spriteBatch.end();
 	}
 
 	@Override

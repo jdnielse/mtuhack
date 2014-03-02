@@ -16,9 +16,29 @@ public class hackinput implements InputProcessor{
 	@Override
 	public boolean keyDown(int keycode) {
 		switch(keycode){
-		case Keys.NUM_1:
+		case Keys.DOWN:
+			Node down=game.activeMap.getDown((int)game.p.getX()/32, (int)game.p.getY()/32);
+			if (down.getCanWalk()){
+			game.p.setPosition(game.p.getX(),game.p.getY()-32);
+			}
 			return true;
-		case Keys.NUM_2:
+		case Keys.RIGHT:
+			Node right=game.activeMap.getRight((int)game.p.getX()/32, (int)game.p.getY()/32);
+			if (right.getCanWalk()){
+				game.p.setPosition(game.p.getX()+32,game.p.getY());
+			}
+			return true;
+		case Keys.UP:
+			Node up=game.activeMap.getUp((int)game.p.getX()/32, (int)game.p.getY()/32);
+			if (up.getCanWalk()){
+			game.p.setPosition(game.p.getX(),game.p.getY()+32);
+			}
+			return true;
+		case Keys.LEFT:
+			Node left=game.activeMap.getLeft((int)game.p.getX()/32, (int)game.p.getY()/32);
+			if (left.getCanWalk()){
+				game.p.setPosition(game.p.getX()-32,game.p.getY());
+			}
 			return true;
 		default:
 			return false;
