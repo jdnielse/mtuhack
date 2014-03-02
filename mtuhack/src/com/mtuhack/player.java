@@ -29,8 +29,8 @@ public class player extends character{
 		textureRegion = Textures.player;
 		weapon = "Greatsword";
 		assignclass();
+		armor="Platemail";
 		level = 0;
-		armor="Cloth";
 	}
 	public void assignclass() {
 		game.mess = "Choose a class:\n7 Fighter   8 Thief   9 Wizard   0 Brute   - Ranger";

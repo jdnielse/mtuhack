@@ -12,7 +12,7 @@ public class Skeleton extends monster{
 		textureRegion=Textures.skeleton;
 		level=1;
 		AC=12;
-		hp=6;
+		hp=7;
 		xp=10;
 		v_rad=6;
 	}

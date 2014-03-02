@@ -10,56 +10,37 @@ public class Troll extends monster{
 		super(p);
 		textureRegion=Textures.troll;
 		level=6;
-		AC=24;
+		AC=22;
 		hp=50;
 		xp=60;
-		v_rad=6;
+		v_rad=7;
 	}
 	
-
+int act_count=0;
 	public void act(float delta){
 		if(dead)return;
 		super.act(delta);
-		boolean move=false;
-		if(Math.random()>.5){
-			if(getX()<game.p.getX()){
-				move=moveRight();
+		calcattack();
+		if(dist2play()>v_rad){
+			if(++act_count>1){
+				act_count=0;		
 			}
-			else if(getX()>game.p.getX()){
-				move=moveLeft();
+			if(act_count>0){
+				moveUp();
 			}
-			if(!move){
-				if(getY()<game.p.getY()){
-					move=moveUp();
-				}
-				else if(getY()>game.p.getY()){
-					move=moveDown();
-				}
+			else{
+				moveDown();
 			}
 		}
 		else{
-			if(getY()<game.p.getY()){
-				move=moveUp();
-			}
-			else if(getY()>game.p.getY()){
-				move=moveDown();
-			}
-			if(!move){
-				if(getX()<game.p.getX()){
-					move=moveRight();
-				}
-				else if(getX()>game.p.getX()){
-					move=moveLeft();
-				}
-			}
+			chase();
 		}
-
 	}
-	public void attack(int playerAC){
+	public void calcattack(){
 		double attackroll1=(Math.random()*20);
 		int attackroll=(int) Math.ceil(attackroll1);
-		int hit=attackroll+12;
+		hit=attackroll+8;
 		double damageroll=Math.random()*10;
-		int damage=(int) Math.ceil(damageroll)+12;
+		damage=(int) Math.ceil(damageroll)+8;
 	}
 }

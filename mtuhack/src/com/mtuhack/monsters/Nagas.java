@@ -14,7 +14,7 @@ public class Nagas extends monster{
 		AC=19;
 		hp=30;
 		xp=30;
-		v_rad=50;
+		v_rad=12;
 	}
 	public boolean moveLeft(){
 		Node left = game.activeMap.getLeft((int)getX()/32, (int)getY()/32);

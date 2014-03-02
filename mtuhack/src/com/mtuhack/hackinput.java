@@ -26,34 +26,34 @@ public class hackinput implements InputProcessor{
 		boolean handled=false;
 		boolean moved = false;
 		switch(keycode){
-		case Keys.NUM_1:
-			//spawn a kobold at a set location
-			Kobolds k = new Kobolds(game);
-			k.setPosition(23*32, 2*32);
-			game.world.addActor(k);
-			handled=true;
-			break;
-		case Keys.NUM_2:
-			//spawn a slime at a set location
-			Skeleton s = new Skeleton(game);
-			s.setPosition(23*32, 2*32);
-			game.world.addActor(s);
-			handled=true;
-			break;
-		case Keys.D:
-			//spawn a dragon at a set location
-			DragonAdult da = new DragonAdult(game);
-			da.setPosition(20*32, 0);
-			game.world.addActor(da);
-			handled=true;
-			break;
-		case Keys.N:
-			//spawns a naga
-			Nagas n=new Nagas(game);
-			n.setPosition(20*32, 5*32);
-			game.world.addActor(n);
-			handled=true;
-			break;
+//		case Keys.NUM_1:
+//			//spawn a kobold at a set location
+//			Kobolds k = new Kobolds(game);
+//			k.setPosition(23*32, 2*32);
+//			game.world.addActor(k);
+//			handled=true;
+//			break;
+//		case Keys.NUM_2:
+//			//spawn a slime at a set location
+//			Skeleton s = new Skeleton(game);
+//			s.setPosition(23*32, 2*32);
+//			game.world.addActor(s);
+//			handled=true;
+//			break;
+//		case Keys.D:
+//			//spawn a dragon at a set location
+//			DragonAdult da = new DragonAdult(game);
+//			da.setPosition(20*32, 0);
+//			game.world.addActor(da);
+//			handled=true;
+//			break;
+//		case Keys.N:
+//			//spawns a naga
+//			Nagas n=new Nagas(game);
+//			n.setPosition(20*32, 5*32);
+//			game.world.addActor(n);
+//			handled=true;
+//			break;
 		case Keys.DOWN:
 			moved = game.p.moveDown();
 			if(!moved){

@@ -10,21 +10,23 @@ public class DragonAdult extends monster{
 		super(p);
 		textureRegion=Textures.dragonadult;
 		level=10;
-		AC=30;
-		hp=100;
+		AC=25;
+		hp=75;
 		xp=100;
-		v_rad=8;
+		v_rad=11;
 	}
 	
 	public void act(float delta){
 		if(dead)return;
+		super.act(delta);
+		calcattack();
 		chase();
 	}
-	public void attack(int playerAC){
+	public void calcattack(){
 		double attackroll1=(Math.random()*20);
 		int attackroll=(int) Math.ceil(attackroll1);
-		int hit=attackroll+12;
+		hit=attackroll+12;
 		double damageroll=Math.random()*8;
-		int damage=(int) Math.ceil(damageroll)+12;
+		damage=(int) Math.ceil(damageroll)+12;
 	}
 }

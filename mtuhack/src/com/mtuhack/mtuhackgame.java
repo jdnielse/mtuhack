@@ -8,6 +8,13 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.mtuhack.monsters.DragonAdult;
+import com.mtuhack.monsters.Goblin;
+import com.mtuhack.monsters.Kobolds;
+import com.mtuhack.monsters.Nagas;
+import com.mtuhack.monsters.Skeleton;
+import com.mtuhack.monsters.Slimes;
+import com.mtuhack.monsters.Troll;
 
 
 public class mtuhackgame implements ApplicationListener, Screen  {
@@ -61,6 +68,51 @@ public class mtuhackgame implements ApplicationListener, Screen  {
 		//set up the input stuff
 		in = new hackinput(this);
     	Gdx.input.setInputProcessor(in);
+    	Kobolds k = new Kobolds(this);
+		k.setPosition(23*32, 2*32);
+		this.world.addActor(k);
+		k=new Kobolds(this);
+		k.setPosition(25*32, 1*32);
+		this.world.addActor(k);
+		k=new Kobolds(this);
+		k.setPosition(28*32, 4*32);
+		this.world.addActor(k);
+		Skeleton s = new Skeleton(this);
+		s.setPosition(14*32, 13*32);
+		this.world.addActor(s);
+		s = new Skeleton(this);
+		s.setPosition(18*32, 15*32);
+		this.world.addActor(s);
+		s = new Skeleton(this);
+		s.setPosition(21*32, 18*32);
+		this.world.addActor(s);
+		Goblin g = new Goblin(this);
+		g.setPosition(5*32, 4*32);
+		this.world.addActor(g);
+		g = new Goblin(this);
+		g.setPosition(0*32, 9*32);
+		this.world.addActor(g);
+		g = new Goblin(this);
+		g.setPosition(3*32, 10*32);
+		this.world.addActor(g);
+		Nagas n = new Nagas(this);
+		n.setPosition(16*32, 2*32);
+		this.world.addActor(n);
+		n = new Nagas(this);
+		n.setPosition(39*32, 15*32);
+		this.world.addActor(n);
+		Slimes sl = new Slimes(this);
+		sl.setPosition(43*32, 4*32);
+		this.world.addActor(sl);
+		sl = new Slimes(this);
+		sl.setPosition(48*32, 7*32);
+		this.world.addActor(sl);
+		Troll t = new Troll(this);
+		t.setPosition(68*32, 7*32);
+		this.world.addActor(t);
+		DragonAdult da = new DragonAdult(this);
+		da.setPosition(79*32, 19*32);
+		this.world.addActor(da);
 	}
 
 	@Override
