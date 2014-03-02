@@ -9,9 +9,9 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 public class character extends Actor{
 	
 	//set this in the individual character classes
-	TextureRegion textureRegion = null;
+	protected TextureRegion textureRegion = null;
 	
-	mtuhackgame parent;
+	mtuhackgame game;
 	int hp;
 	int AC;
 	int v_rad;
@@ -22,12 +22,13 @@ public class character extends Actor{
 	//keep track of what node it is on
 	Node current;
 	//keep track of location in map
-	int w;
-	int h;
+	int x;
+	int y;
 	
 	public character(mtuhackgame p){
-		parent = p;
-		
+		game = p;
+		setWidth(32);
+		setHeight(32);
 	}
 	
 	/**
@@ -35,7 +36,45 @@ public class character extends Actor{
 	 */
 	@Override
 	public void act(float delta){
-
+		//update location
+		x = (int) (getX()/32);
+		y = (int) (getY()/32);
+		
+		
+	}
+	
+	//see if we can move to the given square
+	public boolean moveLeft(){
+		Node left = game.activeMap.getLeft((int)getX()/32, (int)getY()/32);
+		if (left.getCanWalk()){
+			setPosition(getX()-32,getY());
+			return true;
+		}
+		return false;
+	}
+	public boolean moveRight(){
+		Node right = game.activeMap.getRight((int)getX()/32, (int)getY()/32);
+		if (right.getCanWalk()){
+			setPosition(getX()+32,getY());
+			return true;
+		}
+		return false;
+	}
+	public boolean moveUp(){
+		Node up = game.activeMap.getUp((int)getX()/32, (int)getY()/32);
+		if (up.getCanWalk()){
+			setPosition(getX(),getY()+32);
+			return true;
+		}
+		return false;
+	}
+	public boolean moveDown(){
+		Node down = game.activeMap.getDown((int)getX()/32, (int)getY()/32);
+		if (down.getCanWalk()){
+			setPosition(getX(),getY()-32);
+			return true;
+		}
+		return false;
 	}
 	
 	/**

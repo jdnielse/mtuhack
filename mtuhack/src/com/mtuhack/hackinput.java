@@ -2,6 +2,7 @@ package com.mtuhack;
 
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Input.Keys;
+import com.mtuhack.monsters.Kobolds;
 
 public class hackinput implements InputProcessor{
 
@@ -16,6 +17,12 @@ public class hackinput implements InputProcessor{
 	@Override
 	public boolean keyDown(int keycode) {
 		switch(keycode){
+		case Keys.NUM_1:
+			//spawn a kobold at a set location
+			Kobolds k = new Kobolds(game);
+			k.setPosition(10*32, 0);
+			game.world.addActor(k);
+			return true;
 		case Keys.DOWN:
 			Node down=game.activeMap.getDown((int)game.p.getX()/32, (int)game.p.getY()/32);
 			if (down.getCanWalk()){
@@ -30,7 +37,6 @@ public class hackinput implements InputProcessor{
 			return true;
 		case Keys.UP:
 			Node up=game.activeMap.getUp((int)game.p.getX()/32, (int)game.p.getY()/32);
-			System.out.println(game.p.getX()/32+", "+game.p.getY()/32);
 			if (up.getCanWalk()){
 				game.p.setPosition(game.p.getX(),game.p.getY()+32);
 			}
