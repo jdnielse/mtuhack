@@ -2,6 +2,7 @@ package com.mtuhack;
 
 import java.awt.Point;
 import java.util.Random;
+import java.util.Scanner;
 
 import com.badlogic.gdx.scenes.scene2d.Stage;
 
@@ -24,9 +25,9 @@ public class Map{
 
 	/** default constructor */
 	public Map() {	
-		theMap = new Node[10][10];	
-		width = 10;
-		height = 10;
+		theMap = new Node[20][20];	
+		width = 20;
+		height = 20;
 		for(int i=0; i<width; i++) {
 			for(int j=0; j<height; j++) {
 				theMap[i][j] = new Node();
@@ -61,6 +62,14 @@ public class Map{
 		}
 		this.theMap = entrance;
 		return entrance;
+	}
+	
+	public Node[][] getArchwayMap() {
+		if(archway==null){
+			setArchway();
+		}
+		this.theMap = archway;
+		return archway;
 	}
 
 	// get neighbors methods
@@ -221,7 +230,50 @@ public class Map{
 
 	private void setArchway() {
 		archway = new Node[20][20];
-		
+		int w=0;
+		int h=0;
+		String type;
+		Scanner scanner = new Scanner("entrance.txt");
+		scanner.useDelimiter(" ");
+		while (scanner.hasNext()) {
+			type = scanner.next();
+			if (type.equals("000")) { //unwalkable floor
+				archway[w][h] = new Node("floor",false,false,w,h);
+				w++;
+			}
+			if (type.equals("010")) { //walkable floor
+				archway[w][h] = new Node("floor",true,false,w,h);
+				w++;
+			}
+			if (type.equals("300")) { //unwalkable water
+				archway[w][h] = new Node("water",false,false,w,h);
+				w++;
+			}
+			if (type.equals("310")) { //walkable water
+				archway[w][h] = new Node("water",true,false,w,h);
+				w++;
+			}
+			if (type.equals("100")) { //unwalkable wall
+				archway[w][h] = new Node("wall",false,false,w,h);
+				w++;
+			}
+			if (type.equals("110")) { //walkable wall
+				archway[w][h] = new Node("wall",true,false,w,h);
+				w++;
+			}
+			if (type.equals("200")) { //unwalkable lava
+				archway[w][h] = new Node("lava",false,false,w,h);
+			}
+			if (type.equals("210")) { //walkable lava
+				archway[w][h] = new Node("lava",true,false,w,h);
+			}
+			if (w>=20) {
+				w=0;
+				h++;
+			}
+			
+		}
+		scanner.close();
 
 	}//end set archway
 }

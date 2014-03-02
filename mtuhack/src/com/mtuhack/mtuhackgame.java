@@ -38,13 +38,13 @@ public class mtuhackgame implements ApplicationListener, Screen  {
 		//create the map
 		//activeMap = new Map(40,40,this);
 		Map m = new Map();
-		m.getEntranceMap();
+		m.getArchwayMap();
 		activeMap = m;
 		//create the player
 		p = new player(this);
 		//add the player to the stage
 		world.addActor(p);
-		p.setPosition(0,18*32);
+		p.setPosition(0,3*32);
 		p.setWidth(32);
 		p.setHeight(32);
 		set = new settings();
