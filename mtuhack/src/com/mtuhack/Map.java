@@ -1,6 +1,8 @@
 package com.mtuhack;
 
 import java.awt.Point;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -231,45 +233,60 @@ public class Map{
 	private void setArchway() {
 		archway = new Node[20][20];
 		int w=0;
-		int h=0;
+		int h=19;
 		String type;
-		Scanner scanner = new Scanner("entrance.txt");
+		Scanner scanner;
+		try {
+			scanner = new Scanner(new File("archway"));
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return;
+		}
 		scanner.useDelimiter(" ");
+		int last = 19;
 		while (scanner.hasNext()) {
 			type = scanner.next();
+			type = type.replace("\n", "");
+			type = type.trim();
+
 			if (type.equals("000")) { //unwalkable floor
 				archway[w][h] = new Node("floor",false,false,w,h);
 				w++;
-			}
+			}else
 			if (type.equals("010")) { //walkable floor
 				archway[w][h] = new Node("floor",true,false,w,h);
 				w++;
-			}
+			}else
 			if (type.equals("300")) { //unwalkable water
 				archway[w][h] = new Node("water",false,false,w,h);
 				w++;
-			}
+			}else
 			if (type.equals("310")) { //walkable water
 				archway[w][h] = new Node("water",true,false,w,h);
 				w++;
-			}
+			}else
 			if (type.equals("100")) { //unwalkable wall
 				archway[w][h] = new Node("wall",false,false,w,h);
 				w++;
-			}
+			}else
 			if (type.equals("110")) { //walkable wall
 				archway[w][h] = new Node("wall",true,false,w,h);
 				w++;
-			}
+			}else
 			if (type.equals("200")) { //unwalkable lava
 				archway[w][h] = new Node("lava",false,false,w,h);
-			}
+				w++;
+			}else
 			if (type.equals("210")) { //walkable lava
 				archway[w][h] = new Node("lava",true,false,w,h);
+				w++;
+			}else{
+				System.out.println("unhandled case: ["+type+"]");
 			}
-			if (w>=20) {
+			if (w>19) {
 				w=0;
-				h++;
+				h--;
 			}
 			
 		}
