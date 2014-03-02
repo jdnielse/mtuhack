@@ -9,9 +9,11 @@ import java.util.Map;
  */
 public class player extends character{
 	Map<String,Integer>stats;
-	int maxhp = 10;
+	int maxhp = 0;
+	int totalxp=0;
 	String classes;
 	String weapon;
+	String armor;
 	boolean assigned=false;
 	/**
 	 * constructor just takes the parent
@@ -23,8 +25,10 @@ public class player extends character{
 		textureRegion = Textures.player;
 		weapon = "Greatsword";
 		assignclass();
+		levelup();
 		hp = maxhp;
-
+		armor="Fullplate";
+		setAC(armor);
 	}
 	public void assignclass() {
 		game.mess = "Choose a class:\n7 Fighter   8 Thief   9 Wizard   0 Brute   - Ranger";
@@ -93,13 +97,38 @@ public class player extends character{
 			if(m.hp <= 0){
 				//kill it
 				m.kill();
+				totalxp=totalxp+m.xp;
 				game.mess = "Killed and ";
 			}
-			game.mess += "hit "+(m.getClass().toString().substring(m.getClass().toString().lastIndexOf('.'), m.getClass().toString().length()-1)+" with a "+hit+" to hit and did "+damage+" damage!");
+			game.mess += "Hit "+(m.getClass().toString().substring(m.getClass().toString().lastIndexOf('.'), m.getClass().toString().length())+" with a "+hit+" to hit and did "+damage+" damage!");
 
-		}else{
-			game.mess = "Missed "+(m.getClass().toString().substring(m.getClass().toString().lastIndexOf('.'), m.getClass().toString().length()-1)+" with a "+hit);
 		}
-
+		else{
+			game.mess = "Missed "+(m.getClass().toString().substring(m.getClass().toString().lastIndexOf('.'), m.getClass().toString().length())+" with a "+hit);
+		}
 	}
+	
+	public void setAC(String armor){
+		int armorval=0;
+		switch(armor){
+		case "Breastplate":
+			armorval=6;
+			break;
+		case "Chainmail":
+			armorval=4;
+			break;
+		case "Leather":
+			armorval=3;
+			break;
+		case "Fullplate":
+			armorval=9;
+			break;
+		case "Cloth":
+			armorval=1;
+			break;
+		}
+		AC=10+armorval+stats.get("DEX");
+	}
+public void act(float delta){
+}
 }

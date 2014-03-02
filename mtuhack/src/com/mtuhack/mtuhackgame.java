@@ -20,6 +20,9 @@ public class mtuhackgame implements ApplicationListener, Screen  {
 	public settings set;
 	public Map activeMap;
 	public String mess = "";
+	public String mess2="";
+	public String mess3 = "";
+	public String mess4="";
 
 	@Override
 	public void render(float delta) {
@@ -80,8 +83,14 @@ public class mtuhackgame implements ApplicationListener, Screen  {
         world.draw();
         spriteBatch.end();
         spriteBatch.begin();
-        font.setColor(1.0f, 0.0f, 0.0f, 1.0f);
-        font.draw(spriteBatch, mess, 0, 15);
+        font.setColor(1.0f, 0.25f, 0.25f, 1.0f);
+        font.draw(spriteBatch, mess, 0, 30);
+        font.setColor(0.5f, 0.5f, 1.0f, 1.0f);
+        font.draw(spriteBatch, mess2, 0, 15);
+        font.setColor(1.0f, 0.25f, 0.25f, 1.0f);
+        font.draw(spriteBatch, mess3, 32*20-60, 30);
+        font.setColor(0.5f, 0.5f, 1.0f, 1.0f);
+        font.draw(spriteBatch, mess4, 32*20-60, 15);
         spriteBatch.end();
 	}
 

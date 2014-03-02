@@ -104,6 +104,9 @@ public class hackinput implements InputProcessor{
 			}
 			handled=true;
 			break;
+		case Keys.SPACE:
+			handled=true;
+			break;
 		case Keys.NUM_7:
 			game.p.assignclass("Fighter");
 			handled=true;
@@ -127,7 +130,9 @@ public class hackinput implements InputProcessor{
 		default:
 			return false;
 		}
-		game.world.act();	
+		game.world.act();
+		game.mess3 = "HP "+game.p.hp+"/"+game.p.maxhp;
+		game.mess4 = "XP "+game.p.totalxp;
 		return handled;
 	}
 

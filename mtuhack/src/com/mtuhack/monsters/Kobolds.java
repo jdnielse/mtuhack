@@ -20,13 +20,14 @@ public class Kobolds extends monster{
 	public void act(float delta){
 		if(dead)return;
 		super.act(delta);
+		calcattack();
 		chase();
 	}
-	public void attack(int playerAC){
+	public void calcattack(){
 		double attackroll1=(Math.random()*20);
 		int attackroll=(int) Math.ceil(attackroll1);
-		int hit=attackroll+3;
+		hit=attackroll+3;
 		double damageroll=Math.random()*6;
-		int damage=(int) Math.ceil(damageroll)+3;
+		damage=(int) Math.ceil(damageroll)+3;
 	}
 }
