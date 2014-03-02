@@ -1,5 +1,6 @@
 package com.mtuhack.monsters;
 
+import com.mtuhack.Textures;
 import com.mtuhack.monster;
 import com.mtuhack.mtuhackgame;
 
@@ -7,13 +8,14 @@ public class Orc extends monster{
 
 	public Orc(mtuhackgame p) {
 		super(p);
-		// TODO Auto-generated constructor stub
+		textureRegion=Textures.orc;
+		level=3;
+		AC=19;
+		hp=35;
+		xp=30;
+		v_rad=7;
 	}
-	int level=3;
-	int AC=19;
-	int hp=35;
-	int xp=30;
-	int v_rad=7;
+	
 
 	public void attack(int playerAC){
 		double attackroll1=(Math.random()*20);

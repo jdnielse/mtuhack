@@ -1,5 +1,6 @@
 package com.mtuhack.monsters;
 
+import com.mtuhack.Textures;
 import com.mtuhack.monster;
 import com.mtuhack.mtuhackgame;
 import com.mtuhack.weapons;
@@ -8,14 +9,15 @@ public class Skeleton extends monster{
 
 	public Skeleton(mtuhackgame p) {
 		super(p);
-		// TODO Auto-generated constructor stub
+		textureRegion=Textures.skeleton;
+		level=1;
+		AC=12;
+		hp=6;
+		xp=10;
+		v_rad=6;
 	}
 
-	int level=1;
-	int AC=12;
-	int hp=6;
-	int xp=10;
-	int v_rad=6;
+	
 
 	public void attack(int playerAC){
 		double attackroll1=(Math.random()*20);

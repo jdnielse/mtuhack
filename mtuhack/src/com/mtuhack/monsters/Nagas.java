@@ -7,13 +7,14 @@ public class Nagas extends monster{
 
 	public Nagas(mtuhackgame p) {
 		super(p);
-		// TODO Auto-generated constructor stub
+		// add texture
+		level=3;
+		AC=19;
+		hp=30;
+		xp=30;
+		v_rad=6;
 	}
-	int level=3;
-	int AC=19;
-	int hp=30;
-	int xp=30;
-	int v_rad=6;
+	
 
 	public void attack(int playerAC){
 		double attackroll1=(Math.random()*20);

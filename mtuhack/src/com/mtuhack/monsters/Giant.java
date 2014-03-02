@@ -1,5 +1,6 @@
 package com.mtuhack.monsters;
 
+import com.mtuhack.Textures;
 import com.mtuhack.monster;
 import com.mtuhack.mtuhackgame;
 
@@ -7,13 +8,14 @@ public class Giant extends monster{
 
 	public Giant(mtuhackgame p) {
 		super(p);
-		// TODO Auto-generated constructor stub
+		textureRegion=Textures.giant;
+		level=8;
+		AC=25;
+		hp=115;
+		xp=80;
+		v_rad=6;
 	}
-	int level=8;
-	int AC=25;
-	int hp=115;
-	int xp=80;
-	int v_rad=6;
+	
 
 	public void attack(int playerAC){
 		double attackroll1=(Math.random()*20);

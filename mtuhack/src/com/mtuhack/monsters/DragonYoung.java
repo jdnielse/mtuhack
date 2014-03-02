@@ -1,5 +1,6 @@
 package com.mtuhack.monsters;
 
+import com.mtuhack.Textures;
 import com.mtuhack.monster;
 import com.mtuhack.mtuhackgame;
 
@@ -7,13 +8,14 @@ public class DragonYoung extends monster{
 
 	public DragonYoung(mtuhackgame p) {
 		super(p);
-		// TODO Auto-generated constructor stub
+		textureRegion=Textures.dragonyoung;
+		level=6;
+		AC=20;
+		hp=60;
+		xp=60;
+		v_rad=6;
 	}
-	int level=6;
-	int AC=20;
-	int hp=60;
-	int xp=60;
-	int v_rad=6;
+	
 
 	public void attack(int playerAC){
 		double attackroll1=(Math.random()*20);

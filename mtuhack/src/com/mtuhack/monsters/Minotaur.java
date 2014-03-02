@@ -7,13 +7,14 @@ public class Minotaur extends monster{
 
 	public Minotaur(mtuhackgame p) {
 		super(p);
-		// TODO Auto-generated constructor stub
+		// add texture
+		level=4;
+		AC=20;
+		hp=40;
+		xp=40;
+		v_rad=6;
 	}
-	int level=4;
-	int AC=20;
-	int hp=40;
-	int xp=40;
-	int v_rad=6;
+	
 
 	public void attack(int playerAC){
 		double attackroll1=(Math.random()*20);

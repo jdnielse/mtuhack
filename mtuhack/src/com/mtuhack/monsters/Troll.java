@@ -9,12 +9,13 @@ public class Troll extends monster{
 	public Troll(mtuhackgame p) {
 		super(p);
 		textureRegion=Textures.troll;
+		level=6;
+		AC=24;
+		hp=50;
+		xp=60;
+		v_rad=6;
 	}
-	int level=6;
-	int AC=24;
-	int hp=50;
-	int xp=60;
-	int v_rad=6;
+	
 
 	public void act(float delta){
 		super.act(delta);

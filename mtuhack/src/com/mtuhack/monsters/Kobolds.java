@@ -20,47 +20,6 @@ public class Kobolds extends monster{
 	public void act(float delta){
 		if(dead)return;
 		super.act(delta);
-		boolean move=false;
-		if(Math.random()>.5){
-			if(getX()<game.p.getX()){
-				move=moveRight();
-			}
-			else if(getX()>game.p.getX()){
-				move=moveLeft();
-			}
-			if(!move){
-				if(getY()<game.p.getY()){
-					move=moveUp();
-				}
-				else if(getY()>game.p.getY()){
-					move=moveDown();
-				}
-			}
-		}
-		else{
-			if(getY()<game.p.getY()){
-				move=moveUp();
-			}
-			else if(getY()>game.p.getY()){
-				move=moveDown();
-			}
-			if(!move){
-				if(getX()<game.p.getX()){
-					move=moveRight();
-				}
-				else if(getX()>game.p.getX()){
-					move=moveLeft();
-				}
-			}
-		}
-
-	}
-
-	public void attack(int playerAC){
-		double attackroll1=(Math.random()*20);
-		int attackroll=(int) Math.ceil(attackroll1);
-		int hit=attackroll+2;
-		double damageroll=Math.random()*6;
-		int damage=(int) Math.ceil(damageroll)+2;
+		chase();
 	}
 }

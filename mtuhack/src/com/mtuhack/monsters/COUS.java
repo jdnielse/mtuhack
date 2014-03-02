@@ -7,13 +7,14 @@ public class COUS extends monster{
 
 	public COUS(mtuhackgame p) {
 		super(p);
-		// TODO Auto-generated constructor stub
+		// put texture here
+		level=2;
+		AC=15;
+		hp=15;
+		xp=20;
+		v_rad=5;
 	}
-	int level=2;
-	int AC=15;
-	int hp=15;
-	int xp=20;
-	int v_rad=5;
+
 
 	public void attack(int playerAC){
 		double attackroll1=(Math.random()*20);

@@ -7,13 +7,14 @@ public class Beholder extends monster{
 
 	public Beholder(mtuhackgame p) {
 		super(p);
-		// TODO Auto-generated constructor stub
+		// put texture here
+		level=10;
+		AC=25;
+		hp=120;
+		xp=100;
+		v_rad=10;
 	}
-	int level=10;
-	int AC=25;
-	int hp=125;
-	int xp=100;
-	int v_rad=10;
+
 
 	public void attack(int playerAC){
 		double attackroll1=(Math.random()*20);

@@ -7,14 +7,14 @@ public class GiantRat extends monster{
 
 	public GiantRat(mtuhackgame p) {
 		super(p);
-		// TODO Auto-generated constructor stub
+		// add texture
+		level=1;
+		AC=10;
+		hp=10;
+		xp=10;
+		v_rad=6;
 	}
-	int level=1;
-	int AC=10;
-	int hp=10;
-	int xp=10;
-	int v_rad=6;
-
+	
 	public void attack(int playerAC){
 		double attackroll1=(Math.random()*20);
 		int attackroll=(int) Math.ceil(attackroll1);
