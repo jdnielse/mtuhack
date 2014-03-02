@@ -18,7 +18,8 @@ public class Map{
 	private int width;
 	private int height;
 	private Node wall = new Node("wall", false, false,-1,-1); 
-	public Node[][] entrance; 
+	public Node[][] entrance;
+	public Node[][] archway;
 	private mtuhackgame g;
 
 	/** default constructor */
@@ -216,4 +217,9 @@ public class Map{
 
 	}//end set entrance
 
+	private void setArchway() {
+		archway = new Node[20][20];
+		
+
+	}//end set archway
 }
