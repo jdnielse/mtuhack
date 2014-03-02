@@ -25,7 +25,7 @@ public class Slimes extends monster{
 		calcattack();
 		if(dist2play()>v_rad){
 			chase_count=0;
-			game.mess2="";
+			//game.mess2="";
 			if(++act_count>4){
 				act_count=1;
 			}

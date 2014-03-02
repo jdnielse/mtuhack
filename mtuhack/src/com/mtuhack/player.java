@@ -190,11 +190,11 @@ public class player extends character{
 				}
 				game.mess = "Killed and ";
 			}
-			game.mess += "Hit "+(m.getClass().toString().substring(m.getClass().toString().lastIndexOf('.'), m.getClass().toString().length())+" with a "+hit+" to hit and did "+damage+" damage!");
+			game.mess += "Hit "+(m.getClass().toString().substring(m.getClass().toString().lastIndexOf('.')+1, m.getClass().toString().length())+" with a "+hit+" to hit and did "+damage+" damage!");
 
 		}
 		else{
-			game.mess = "Missed "+(m.getClass().toString().substring(m.getClass().toString().lastIndexOf('.'), m.getClass().toString().length())+" with a "+hit);
+			game.mess = "Missed "+(m.getClass().toString().substring(m.getClass().toString().lastIndexOf('.')+1, m.getClass().toString().length())+" with a "+hit);
 		}
 	}
 

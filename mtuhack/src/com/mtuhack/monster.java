@@ -29,10 +29,10 @@ public class monster extends character{
 				c.kill();
 				game.mess2 = "Killed and ";
 			}
-			game.mess2 += "Hit "+(c.getClass().toString().substring(c.getClass().toString().lastIndexOf('.'), c.getClass().toString().length())+" with a "+hit+" to hit and did "+damage+" damage!");
+			game.mess2 += "Hit "+(c.getClass().toString().substring(c.getClass().toString().lastIndexOf('.')+1, c.getClass().toString().length())+" with a "+hit+" to hit and did "+damage+" damage!");
 
 		}else{
-			game.mess2 = "Missed "+(c.getClass().toString().substring(c.getClass().toString().lastIndexOf('.'), c.getClass().toString().length())+" with a "+hit);
+			game.mess2 = "Missed "+(c.getClass().toString().substring(c.getClass().toString().lastIndexOf('.')+1, c.getClass().toString().length())+" with a "+hit);
 		}
 	}
 	public void chase(){
