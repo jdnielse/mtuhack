@@ -45,8 +45,28 @@ public class player extends character{
 			damage=weapons.mace()+stats.get("STR");
 			hit=attackroll+stats.get("STR");
 			break;
-		case "Longbow":
-			damage=weapons.longbow()+stats.get("STR");
+		case "Staff":
+			damage=weapons.staff()+stats.get("STR");
+			hit=attackroll+stats.get("STR");
+			break;
+		case "Club":
+			damage=weapons.club()+stats.get("STR");
+			hit=attackroll+stats.get("STR");
+			break;
+		case "Greatax":
+			damage=weapons.greatax()+stats.get("STR");
+			hit=attackroll+stats.get("STR");
+			break;
+		case "Dagger":
+			damage=weapons.dagger()+stats.get("STR");
+			hit=attackroll+stats.get("STR");
+			break;
+		case "Shortbow":
+			damage=weapons.shortbow()+stats.get("STR");
+			hit=attackroll+stats.get("DEX");
+			break;
+		case "Crossbow":
+			damage=weapons.crossbow();
 			hit=attackroll+stats.get("DEX");
 			break;
 		}
