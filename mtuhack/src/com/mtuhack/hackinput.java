@@ -43,9 +43,8 @@ public class hackinput implements InputProcessor{
 				//check if its an enemy
 				for(Actor c:game.world.getActors()){
 					if(c.getX()==down.getX()&&c.getY()==down.getY()){
-						System.out.println(c.getClass().toString());
-						if(c instanceof Kobolds){
-							game.p.attack((Kobolds) c);
+						if(c instanceof monster){
+							game.p.attack((monster) c);
 						}
 					}
 				}
