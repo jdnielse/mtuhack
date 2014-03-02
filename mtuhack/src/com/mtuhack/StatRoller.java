@@ -88,7 +88,4 @@ public class StatRoller {
 		}
 		return 0;
 	}
-	public static void main(String[] args){
-		StatGen("Brute");
-	}
 }

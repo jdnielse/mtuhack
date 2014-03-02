@@ -25,10 +25,7 @@ public class player extends character{
 		textureRegion = Textures.player;
 		weapon = "Greatsword";
 		assignclass();
-		levelup();
-		hp = maxhp;
 		armor="Fullplate";
-		setAC(armor);
 	}
 	public void assignclass() {
 		game.mess = "Choose a class:\n7 Fighter   8 Thief   9 Wizard   0 Brute   - Ranger";
@@ -39,6 +36,9 @@ public class player extends character{
 			classes=classname;
 			assigned=true;
 			game.mess = "";
+			levelup();
+			hp = maxhp;
+			setAC(armor);
 		}
 	}
 	public void levelup(){
@@ -107,7 +107,7 @@ public class player extends character{
 			game.mess = "Missed "+(m.getClass().toString().substring(m.getClass().toString().lastIndexOf('.'), m.getClass().toString().length())+" with a "+hit);
 		}
 	}
-	
+
 	public void setAC(String armor){
 		int armorval=0;
 		switch(armor){
@@ -129,6 +129,6 @@ public class player extends character{
 		}
 		AC=10+armorval+stats.get("DEX");
 	}
-public void act(float delta){
-}
+	public void act(float delta){
+	}
 }
