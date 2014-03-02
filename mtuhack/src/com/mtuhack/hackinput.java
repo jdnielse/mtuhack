@@ -14,6 +14,8 @@ public class hackinput implements InputProcessor{
 	public hackinput(mtuhackgame g){
 		game = g;
 	}
+	
+	public boolean hitMid = false;
 
 	/**
 	 * The one we're using, just detects when a key is pressed
@@ -71,6 +73,13 @@ public class hackinput implements InputProcessor{
 						}
 					}
 				}
+			}else{
+				if(game.p.getX() > 20*32){
+					hitMid = true;
+				}
+				if(hitMid){
+					game.scroll-=32;
+				}
 			}
 			handled=true;
 			break;
@@ -100,6 +109,11 @@ public class hackinput implements InputProcessor{
 							game.p.attack((monster) c);
 						}
 					}
+				}
+			}else{
+				if(hitMid){
+
+					game.scroll+=32;
 				}
 			}
 			handled=true;

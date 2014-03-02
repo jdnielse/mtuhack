@@ -114,7 +114,7 @@ public class character extends Actor{
 	public void draw (Batch batch, float parentAlpha) {
 		Color color = getColor();
 		batch.setColor(color.g, color.g, color.b, color.a * parentAlpha);
-		batch.draw(textureRegion, getX(), getY(), getOriginX(), getOriginY(), getWidth(), getHeight(), getScaleX(), getScaleY(), getRotation());
+		batch.draw(textureRegion, getX()+ mtuhackgame.g.scroll, getY(), getOriginX(), getOriginY(), getWidth(), getHeight(), getScaleX(), getScaleY(), getRotation());
 	}
 
 }

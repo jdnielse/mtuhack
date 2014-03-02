@@ -68,7 +68,7 @@ public class Node extends Actor{
 	public void draw (Batch batch, float parentAlpha) {
 		Color color = getColor();
 		batch.setColor(color.g, color.g, color.b, color.a * parentAlpha);
-		batch.draw(texture, getX(), getY(), getOriginX(), getOriginY(), getWidth(), getHeight(), getScaleX(), getScaleY(), getRotation());
+		batch.draw(texture, getX() + mtuhackgame.g.scroll, getY(), getOriginX(), getOriginY(), getWidth(), getHeight(), getScaleX(), getScaleY(), getRotation());
 	}
 	
 	// Accessor methods:

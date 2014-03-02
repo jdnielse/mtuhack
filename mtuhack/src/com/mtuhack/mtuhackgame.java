@@ -23,6 +23,7 @@ public class mtuhackgame implements ApplicationListener, Screen  {
 	public String mess2="";
 	public String mess3 = "";
 	public String mess4="";
+	int scroll = 0;
 
 	@Override
 	public void render(float delta) {
@@ -49,7 +50,7 @@ public class mtuhackgame implements ApplicationListener, Screen  {
 		p = new player(this);
 		//add the player to the stage
 		world.addActor(p);
-		p.setPosition(20*32,19*32);
+		p.setPosition(8*32,19*32);
 		p.setWidth(32);
 		p.setHeight(32);
 		set = new settings();
