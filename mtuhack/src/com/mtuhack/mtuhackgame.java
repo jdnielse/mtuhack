@@ -36,6 +36,8 @@ public class mtuhackgame implements ApplicationListener, Screen  {
 	public String mess6="";
 	public String mess7="";
 	public String mess8="";
+	public String mess9="";
+	public String mess10="";
 	int scroll = 0;
 	public hackinput in;
 
@@ -169,6 +171,10 @@ public class mtuhackgame implements ApplicationListener, Screen  {
         font.draw(spriteBatch, mess7, Gdx.graphics.getWidth()-90, 590);
         //font.setColor(0.5f, 0.5f, 1.0f, 1.0f);
         font.draw(spriteBatch, mess8, Gdx.graphics.getWidth()-90, 570);
+        font.draw(spriteBatch, mess9, Gdx.graphics.getWidth()-90, 550);
+        font.setScale(20);
+        font.setColor(Color.YELLOW);
+        font.draw(spriteBatch, mess10, 150, 400);
         spriteBatch.end();
 	}
 

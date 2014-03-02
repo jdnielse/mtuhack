@@ -29,4 +29,9 @@ public class DragonAdult extends monster{
 		double damageroll=Math.random()*8;
 		damage=(int) Math.ceil(damageroll)+8;
 	}
+	
+	public void kill(){
+		super.kill();
+		game.mess10 = "You win!";
+	}
 }

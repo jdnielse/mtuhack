@@ -29,7 +29,7 @@ public class player extends character{
 		textureRegion = Textures.player;
 		weapon = "Greatsword";
 		assignclass();
-		armor="Platemail";
+		armor="Fullplate";
 		level = 0;
 	}
 	public void assignclass() {

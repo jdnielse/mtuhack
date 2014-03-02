@@ -160,6 +160,7 @@ public class hackinput implements InputProcessor{
 			game.mess6 = "DEX "+game.p.stats.get("DEX");
 			game.mess7 = "CON "+game.p.stats.get("CON");
 			game.mess8 = "INT "+game.p.stats.get("INT");
+			game.mess9 = "AC "+game.p.AC;
 		}
 		return handled;
 	}
