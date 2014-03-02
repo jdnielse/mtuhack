@@ -20,6 +20,7 @@ public class Node extends Actor{
 	private boolean walkable; // true = can walk
 	private boolean interact; // true = can interact
 	private boolean nextMap; // true = can go to next map
+	private Node next;
 	
 	/** Creates a walkable floor node that cannot be interacted with */
 	public Node() {
@@ -83,6 +84,9 @@ public class Node extends Actor{
 	public boolean getNextMap() {
 		return nextMap;
 	}
+	public Node getNext() {
+		return next;
+	}
 	
 	// Modifier methods:
 	public void setElement(String newElem) { 
@@ -96,5 +100,8 @@ public class Node extends Actor{
 	}
 	public void setNextMap(boolean n) {
 		nextMap = n;
+	}
+	public void setNext(Node node) {
+		next = node;
 	}
 }
