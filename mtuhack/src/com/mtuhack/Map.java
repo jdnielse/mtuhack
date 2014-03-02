@@ -71,13 +71,13 @@ public class Map{
 		return theMap[w][h+1];
 	}
 	public Node getDown(int w, int h) {
-		if ( !(h>0) ) {
+		if ( !(h>=0) ) {
 			return wall;
 		}
 		return theMap[w][h-1];
 	}
 	public Node getLeft(int w, int h) {
-		if ( !(w>0) ) {
+		if ( !(w>=0) ) {
 			return wall;
 		}
 		return theMap[w-1][h];
