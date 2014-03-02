@@ -1,5 +1,6 @@
 package com.mtuhack.monsters;
 
+import com.mtuhack.Textures;
 import com.mtuhack.monster;
 import com.mtuhack.mtuhackgame;
 
@@ -7,50 +8,51 @@ public class Slimes extends monster{
 
 	public Slimes(mtuhackgame p) {
 		super(p);
-		// TODO Auto-generated constructor stub
+		textureRegion=Textures.slimes;
 	}
 	int level=3;
 	int AC=13;
 	int hp=20;
 	int xp=30;
-	int v_rad=6;
+	int v_rad=3;
+	int act_count=0;
+	int chase_count=0;
 	public void act(float delta){
 		super.act(delta);
 		boolean move=false;
-		if(Math.random()>.5){
-			if(getX()<game.p.getX()){
-				move=moveRight();
+		if(dist2play()>v_rad){
+			chase_count=0;
+			if(++act_count>4){
+				act_count=1;
 			}
-			else if(getX()>game.p.getX()){
-				move=moveLeft();
-			}
-			if(!move){
-				if(getY()<game.p.getY()){
-					move=moveUp();
-				}
-				else if(getY()>game.p.getY()){
-					move=moveDown();
-				}
+			switch(act_count){
+			case 1:
+				moveUp();
+				break;
+			case 2:
+				moveRight();
+				break;
+			case 3:
+				moveDown();
+				break;
+			case 4:
+				moveLeft();
+				break;
 			}
 		}
 		else{
-			if(getY()<game.p.getY()){
-				move=moveUp();
-			}
-			else if(getY()>game.p.getY()){
-				move=moveDown();
-			}
-			if(!move){
-				if(getX()<game.p.getX()){
-					move=moveRight();
+			++chase_count;
+			if(chase_count>5){
+				if(chase_count>10){
+					chase_count=0;
 				}
-				else if(getX()>game.p.getX()){
-					move=moveLeft();
-				}
+			}
+			else{
+				chase();
 			}
 		}
-
 	}
+
 	public void attack(int playerAC){
 		double attackroll1=(Math.random()*20);
 		int attackroll=(int) Math.ceil(attackroll1);

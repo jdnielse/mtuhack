@@ -3,6 +3,7 @@ package com.mtuhack;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Input.Keys;
 import com.mtuhack.monsters.Kobolds;
+import com.mtuhack.monsters.Slimes;
 import com.mtuhack.monsters.Troll;
 
 public class hackinput implements InputProcessor{
@@ -24,6 +25,13 @@ public class hackinput implements InputProcessor{
 			Kobolds k = new Kobolds(game);
 			k.setPosition(10*32, 0);
 			game.world.addActor(k);
+			handled=true;
+			break;
+		case Keys.NUM_2:
+			//spawn a slime at a set location
+			Slimes s = new Slimes(game);
+			s.setPosition(10*32, 0);
+			game.world.addActor(s);
 			handled=true;
 			break;
 		case Keys.DOWN:
