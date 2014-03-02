@@ -153,12 +153,14 @@ public class hackinput implements InputProcessor{
 			return false;
 		}
 		game.world.act();
-		game.mess3 = "HP "+game.p.hp+"/"+game.p.maxhp;
-		game.mess4 = "XP "+game.p.totalxp;
-		game.mess5 = "STR "+game.p.stats.get("STR");
-		game.mess6 = "DEX "+game.p.stats.get("DEX");
-		game.mess7 = "CON "+game.p.stats.get("CON");
-		game.mess8 = "INT "+game.p.stats.get("INT");
+		if(game.p.assigned){
+			game.mess3 = "HP "+game.p.hp+"/"+game.p.maxhp;
+			game.mess4 = "XP "+game.p.totalxp;
+			game.mess5 = "STR "+game.p.stats.get("STR");
+			game.mess6 = "DEX "+game.p.stats.get("DEX");
+			game.mess7 = "CON "+game.p.stats.get("CON");
+			game.mess8 = "INT "+game.p.stats.get("INT");
+		}
 		return handled;
 	}
 

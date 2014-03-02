@@ -57,8 +57,6 @@ public class mtuhackgame implements ApplicationListener, Screen  {
 		//add the player to the stage
 		world.addActor(p);
 		p.setPosition(8*32,19*32);
-//		p.setWidth(32);
-//		p.setHeight(32);
 		set = new settings();
 		//set up the input stuff
 		in = new hackinput(this);
@@ -93,21 +91,22 @@ public class mtuhackgame implements ApplicationListener, Screen  {
         spriteBatch.end();
         spriteBatch.begin();
         font.setColor(Color.WHITE);
-        font.draw(spriteBatch, mess, 0, 30);
+        font.setScale((float)1.5);
+        font.draw(spriteBatch, mess, 0, 40);
         //font.setColor(0.5f, 0.5f, 1.0f, 1.0f);
-        font.draw(spriteBatch, mess2, 0, 15);
+        font.draw(spriteBatch, mess2, 0, 20);
         //font.setColor(1.0f, 0.25f, 0.25f, 1.0f);
-        font.draw(spriteBatch, mess3, Gdx.graphics.getWidth()-60, 40);
+        font.draw(spriteBatch, mess3, Gdx.graphics.getWidth()-90, 40);
         //font.setColor(0.5f, 0.5f, 1.0f, 1.0f);
-        font.draw(spriteBatch, mess4, Gdx.graphics.getWidth()-60, 20);
+        font.draw(spriteBatch, mess4, Gdx.graphics.getWidth()-90, 20);
         //font.setColor(1.0f, 0.25f, 0.25f, 1.0f);
-        font.draw(spriteBatch, mess5, Gdx.graphics.getWidth()-60, 630);
+        font.draw(spriteBatch, mess5, Gdx.graphics.getWidth()-90, 630);
         //font.setColor(0.5f, 0.5f, 1.0f, 1.0f);
-        font.draw(spriteBatch, mess6, Gdx.graphics.getWidth()-60, 610);
+        font.draw(spriteBatch, mess6, Gdx.graphics.getWidth()-90, 610);
         //font.setColor(1.0f, 0.25f, 0.25f, 1.0f);
-        font.draw(spriteBatch, mess7, Gdx.graphics.getWidth()-60, 590);
+        font.draw(spriteBatch, mess7, Gdx.graphics.getWidth()-90, 590);
         //font.setColor(0.5f, 0.5f, 1.0f, 1.0f);
-        font.draw(spriteBatch, mess8, Gdx.graphics.getWidth()-60, 570);
+        font.draw(spriteBatch, mess8, Gdx.graphics.getWidth()-90, 570);
         spriteBatch.end();
 	}
 

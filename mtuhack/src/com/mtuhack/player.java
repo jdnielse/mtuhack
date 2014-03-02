@@ -18,7 +18,7 @@ public class player extends character{
 	String classes;
 	String weapon;
 	String armor;
-	boolean assigned=false;
+	public boolean assigned=false;
 	/**
 	 * constructor just takes the parent
 	 * assigns the texture of the player to the player texture
